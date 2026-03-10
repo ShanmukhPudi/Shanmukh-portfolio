@@ -1,7 +1,10 @@
-import { PERSONAL } from "../../constants"
+import { PERSONAL, TYPED_STRINGS } from "../../constants"
 import Button from "../ui/Button"
+import useTypewriter from "../../hooks/useTypewriter"
 
 const Hero = () => {
+
+    const typedText = useTypewriter(TYPED_STRINGS, 80, 2000)
     return (
         <section 
             id="hero"
@@ -21,8 +24,15 @@ const Hero = () => {
             </h1>
 
             {/* animated title placeholder */}
-            <h2 className="text-2xl md:text-3xl font-semibold text-[#008f5a] dark:text-[#00ff9f] font-mono mb-6">
+            {/* <h2 className="text-2xl md:text-3xl font-semibold text-[#008f5a] dark:text-[#00ff9f] font-mono mb-6">
                 {PERSONAL.title}
+            </h2> */}
+            <h2 className="text-2xl md:text-3xl font-semibold text-[#008f5a] dark:text-[#00ff9f] font-mono mb-6 h-10 flex items-center gap-1">
+                {typedText}
+                <span 
+                    aria-hidden="true"
+                    className="inline-block w-0.5 h-7 bg-[#008f5a] dark:bg-[#00ff9f] animate-pulse"
+                />
             </h2>
 
             {/* tagline */}
@@ -72,6 +82,7 @@ const Hero = () => {
             </div>
         </section>
     )
+
 }
 
 export default Hero
