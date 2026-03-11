@@ -30,7 +30,7 @@ const About = () => {
         <section 
         id="about"
         aria-label="About section"
-        className="py-32 px-12 md:px-20 max-w-6xl mx-auto"
+        className="py-32 px-12 md:px-20 max-w-6xl mx-auto w-full"
     >
         {/* section header */}
         <motion.div 
