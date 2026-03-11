@@ -18,7 +18,7 @@ export const TYPED_STRINGS = [
 ]
 
 export const ABOUT = {
-    bio: "I'm Shanmukh, a Software Engineer based in Visakhapatnam, India. I specialize in building automation systems, enterprise workflows, and full-stack web application that actually solve real problems. Over the past couple of years I've gone from Google sheets and App Scripts to full production-grade systems - and I'm just getting started. I enjoy turning messy, manual processes into clean, scalable products that teams love using."
+    bio: "I'm Shanmukh, a Software Engineer based in Visakhapatnam, India. I specialize in building automation systems, enterprise workflows, and full-stack web application that actually solve real problems. Over the past couple of years I've gone from Google sheets and App Scripts to full production-grade systems - and I'm just getting started. I enjoy turning messy, manual processes into clean, scalable products that teams love using.",
     strengths: [
         {
             id: 1,
