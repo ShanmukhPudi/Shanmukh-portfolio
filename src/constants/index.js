@@ -1,5 +1,5 @@
 export const PERSONAL = {
-    name: "P V Shanmukh Krishna",
+    name: "Shanmukh Pudi",
     title: "Full-Stack Developer & Automation Engineer",
     tagline: "Building enterprise-grade systems that turn workflows into products.",
     email: "Outlook.com",

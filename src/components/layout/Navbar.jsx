@@ -24,16 +24,17 @@ const Navbar = ({ isDark, toggleTheme }) => {
   return (
     <header
       role="banner"
-      className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300
         ${isScrolled
           ? "bg-[#f9f9f9]/90 dark:bg-[#0a0a0a]/90 backdrop-blur-md border-b border-[#e4e4e4] dark:border-[#1f1f1f]"
           : "bg-[#f9f9f9] dark:bg-[#0a0a0a]"
         }`}
     >
+      <div className="w-full px-6 md:px-10">
       <nav
         role="navigation"
         aria-label="Main navigation"
-        className="max-w-6xl mx-auto px-8 py-5 flex items-center justify-between"
+        className="max-w-6xl mx-auto flex items-center justify-between py-5"
       >
 
         {/* Logo */}
@@ -87,6 +88,7 @@ const Navbar = ({ isDark, toggleTheme }) => {
 
         </div>
       </nav>
+      </div>
 
       {/* Mobile Menu */}
       {menuOpen && (

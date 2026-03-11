@@ -1,5 +1,5 @@
 const Button = ({ href, variant = "primary", children, ...props }) => {
-    const base = "px-6 py-3 font-mono text-sm font -medium rounded transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+    const base = "px-8 py-4 font-mono text-sm font-medium rounded transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
 
     const variants = {
         primary: "bg-[#008f5a] dark:bg-[#00ff9f] text-white dark:text-black hover:opacity-80 focus-visible:outline-[#008f5a]",

@@ -2,6 +2,7 @@ import { PERSONAL, TYPED_STRINGS } from "../../constants"
 import Button from "../ui/Button"
 import useTypewriter from "../../hooks/useTypewriter"
 import { motion } from "framer-motion"
+import profilePhoto from "../../assets/profile.jpg"
 
 // Animation variants
 const containerVariants = {
@@ -46,94 +47,118 @@ const Hero = () => {
         <section 
             id="hero"
             aria-label="Hero section"
-            className="relative min-h-screen flex flex-col justify-center px-6 max-2-6xl mx-auto"
+            className="relative min-h-screen flex items-center justify-center w-full px-6"
         >
-            <motion.div 
-                variants={containerVariants}
-                initial="hidden"
-                animate="visible"
-                className="flex flex-col"
-            >
-            
-            {/* terminal greeting line */}
-            <motion.div variants={itemVariants} className="mb-6">
-                <span className="font-mono text-sm text-[#008f5a] dark:text-[#00ff9f] tracking-widest uppercase">
-                    {">_ hello world"}
-                </span>
-            </motion.div>
-
-            {/* Name */}
-            <motion.h1 
-                variants={itemVariants}
-                className="text-6xl md:text-8xl font-bold text-[#111111] dark:text-[#e8e8e8] leading-none tracking-tight mb-4"
-            >
-                {PERSONAL.name}
-            </motion.h1>
-
-            {/* animated title placeholder */}
-            {/* <h2 className="text-2xl md:text-3xl font-semibold text-[#008f5a] dark:text-[#00ff9f] font-mono mb-6">
-                {PERSONAL.title}
-            </h2> */}
-            <motion.h2 
-                variants={itemVariants} 
-                className="text-2xl md:text-3xl font-semibold text-[#008f5a] dark:text-[#00ff9f] font-mono mb-6 h-10 flex items-center gap-1"
-            >
-                {typedText}
-                <span 
-                    aria-hidden="true"
-                    className="inline-block w-0.5 h-7 bg-[#008f5a] dark:bg-[#00ff9f] animate-pulse"
-                />
-            </motion.h2>
-
-            {/* tagline */}
-            <motion.p 
-                variants={itemVariants} 
-                className="text-base md:text-lg text-[#777777] dark:text-[#6b6b6b] max-w-xl leading-relaxed mb-10"
-            >
-                {PERSONAL.tagline}
-            </motion.p>
-
-            {/* CTA buttons */}
-            <motion.div 
-                variants={itemVariants} 
-                className="flex flex-wrap gap-4 mb-12"
-            >
-                <Button 
-                    href="#projects"
-                    variant="primary"
-                    aria-label="View my projects"
-                >
-                    View Projects
-                </Button>
-                <Button 
-                    href="#contact"
-                    variant="outline"
-                    aria-label="Contact Shanmukh"
-                >
-                    Contact Me
-                </Button>
-            </motion.div>
-
-            {/* availability status */}
-            {PERSONAL.available && (
+            <div className="max-w-6xl mx-auto w-full flex items-center justify-between gap-16">
                 <motion.div 
-                    variants={itemVariants}
+                    variants={containerVariants}
                     initial="hidden"
                     animate="visible"
-                    role="status"
-                    aria-label="Currently available for work"
-                    className="flex items-center gap-2"
+                    className="flex flex-col flex-1 max-w-xl"
                 >
-                    <span className="relative flex h-2.5 w-2.5">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00ff9f] opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#008f5a] dark:bg-[#00ff9f]"></span>
-                    </span>
-                    <span className="text-sm font-mono text-[#777777] dark:text-[#6b6b6b]">
-                        Available for work
+                
+                {/* terminal greeting line */}
+                <motion.div variants={itemVariants} className="mb-6">
+                    <span className="font-mono text-sm text-[#008f5a] dark:text-[#00ff9f] tracking-widest uppercase">
+                        {">_ hello world"}
                     </span>
                 </motion.div>
-            )}
-        </motion.div>
+
+                {/* Name */}
+                <motion.h1 
+                    variants={itemVariants}
+                    className="text-4xl md:text-6xl font-bold text-[#111111] dark:text-[#e8e8e8] leading-none tracking-tight mb-4"
+                >
+                    {PERSONAL.name}
+                </motion.h1>
+
+                {/* animated title placeholder */}
+                {/* <h2 className="text-2xl md:text-3xl font-semibold text-[#008f5a] dark:text-[#00ff9f] font-mono mb-6">
+                    {PERSONAL.title}
+                </h2> */}
+                <motion.h2 
+                    variants={itemVariants} 
+                    className="text-2xl md:text-3xl font-semibold text-[#008f5a] dark:text-[#00ff9f] font-mono mb-6 h-10 flex items-center gap-1"
+                >
+                    {typedText}
+                    <span 
+                        aria-hidden="true"
+                        className="inline-block w-0.5 h-7 bg-[#008f5a] dark:bg-[#00ff9f] animate-pulse"
+                    />
+                </motion.h2>
+
+                {/* tagline */}
+                <motion.p 
+                    variants={itemVariants} 
+                    className="text-lg md:text-xl text-[#777777] dark:text-[#6b6b6b] max-w-xl leading-relaxed mb-10"
+                >
+                    {PERSONAL.tagline}
+                </motion.p>
+
+                {/* CTA buttons */}
+                <motion.div 
+                    variants={itemVariants} 
+                    className="flex flex-wrap gap-6 mb-12"
+                >
+                    <Button 
+                        href="#projects"
+                        variant="primary"
+                        aria-label="View my projects"
+                    >
+                        View Projects
+                    </Button>
+                    <Button 
+                        href="#contact"
+                        variant="outline"
+                        aria-label="Contact Shanmukh"
+                    >
+                        Contact Me
+                    </Button>
+                </motion.div>
+
+                {/* availability status */}
+                {PERSONAL.available && (
+                    <motion.div 
+                        variants={itemVariants}
+                        initial="hidden"
+                        animate="visible"
+                        role="status"
+                        aria-label="Currently available for work"
+                        className="flex items-center gap-2"
+                    >
+                        <span className="relative flex h-2.5 w-2.5">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00ff9f] opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#008f5a] dark:bg-[#00ff9f]"></span>
+                        </span>
+                        <span className="text-sm font-mono text-[#777777] dark:text-[#6b6b6b]">
+                            Available for work
+                        </span>
+                    </motion.div>
+                )}
+            </motion.div>
+
+
+            {/* profile photo @ right column */}
+            <motion.div 
+                variants={fadeVariants}
+                initial="hidden"
+                animate="visible"
+                className="relative w-72 md:w-96 flex-shrink-0"
+            >
+                {/* glow effect behind photo */}
+                <div 
+                    aria-hidden="true"
+                    className="absolute inset-0 rounded-2xl bg-[#008f5a] dark:bg-[#00ff9f] opacity-20 blur-2xl scale-110"
+                />
+
+                {/* photo deets here */}
+                <img 
+                    src={profilePhoto}
+                    alt="Shanmukh -- Full-Stack Developer and Automation Engineer"
+                    className="relative w-full aspect-[2/3] object-cover object-[center_30%] rounded-2xl border border-[#e4e4e4] dark:border-[#1f1f1f]"
+                />
+            </motion.div>
+        </div>
 
             {/* scroll info */}
             <motion.div 
