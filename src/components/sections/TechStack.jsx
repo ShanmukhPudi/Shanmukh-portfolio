@@ -88,7 +88,8 @@ const TechStack = () => {
                                     <img 
                                         src={skill.icon}
                                         alt={`${skill.name} logo`}
-                                        className="w-10 h-10 object-contain group-hover:scale-110 transition-transform duration-300"
+                                        className={`w-10 h-10 object-contain group-hover:scale-110 transition-transform duration-300 ${skill.name === "GitHub" || skill.name === "Framer Motion" ? "dark:invert" : ""}
+                                        `}
                                     />
 
                                     {/*name*/}
