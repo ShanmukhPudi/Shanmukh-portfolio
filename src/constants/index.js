@@ -90,3 +90,39 @@ export const TECH_STACK = [
     ],
   },
 ]
+
+export const PROJECTS = [
+  {
+    id: 1,
+    title: "Hotel Booking App",
+    description: "A full-stack hotel booking platfoem with user authentication, hotel listings, room booking flow, and an admin panel for hotel management.",
+    tags: ["MongoDB", "Express", "React", "Node.js", "JWT"],
+    github: "https://github.com/ShanmukhPudi/glowing-adventure",
+    demo: "https://shanmukhpudi.github.io/glowing-adventure/",
+    status: "live",
+    featured: true,
+    image: null,
+  },
+  {
+    id: 2,
+    title: "Dispatch Management System",
+    description: "An enterprise-grage dispatch and Whatsapp automation system built to eliminate manual communication effort and streamline field operations.",
+    tags: ["React", "Node.js", "PostgreSQL", "WhatsApp API"],
+    github: null,
+    demo: null,
+    status: "In-development",
+    featured: false,
+    image: null,
+  },
+  {
+    id: 3,
+    title: "Flow Management System",
+    description: "A production-grade FMS to orchestrate and streamline sales, purchase processes and inventory tracking across teams in real time.",
+    tags: ["React", "Python", "Firestore", "REST API"],
+    github: null,
+    demo: null,
+    status: "In-development",
+    featured: false,
+    image: null,
+  },
+]
