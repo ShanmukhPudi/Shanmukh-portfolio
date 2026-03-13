@@ -1,6 +1,7 @@
 import Hero from "../components/sections/Hero"
 import About from "../components/sections/About"
 import TechStack from "../components/sections/TechStack"
+import Projects from "../components/sections/Projects"
 import SectionDivider from "../components/ui/Sectiondivider"
 
 const HomeContainer = () => {
@@ -13,6 +14,10 @@ const HomeContainer = () => {
             </div>
             <SectionDivider />
             <TechStack />
+            <SectionDivider />
+            <div className="w-full bg-[#f4f4f4] dark:bg-[#0d0d0d]">
+                <Projects />
+            </div>
             <SectionDivider />
         </main>
     )
