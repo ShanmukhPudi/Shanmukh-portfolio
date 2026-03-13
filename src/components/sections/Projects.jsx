@@ -36,6 +36,13 @@ const FeaturedProject = ({ project }) => {
             variants={itemVariants}
             className="relative rounded-2xl border border-[#e4e4e4] dark:border-[#1f1f1f] bg-white dark:bg-[#111111] overflow-hidden hover:border-[#008f5a] dark:hover:border-[#00ff9f] transition-all duration-300 group"
         >
+            
+            {/*gradient top border*/}
+            {/* <div 
+                aria-hidden="true"
+                className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#008f5a] via-[#00cfff] to-[#008f5a] dark:from-[#00ff9f] dark:via-[#00cfff] dark:to-[#00ff9f]"></div> */}
+
+
             {/*featured badge*/}
             <div className="absolute top-4 left-4 z-10">
                 <span className="px-3 py-1 text-xs font-mono rounded-full bg-[#008f5a] dark:bg-[#00ff9f] text-white dark:text-black">
