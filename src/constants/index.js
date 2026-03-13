@@ -1,3 +1,5 @@
+import { label } from "framer-motion/client"
+
 export const PERSONAL = {
     name: "Shanmukh Pudi",
     title: "Full-Stack Developer & Automation Engineer",
@@ -149,3 +151,10 @@ export const EXPERIENCE = [
 ]
 
 export const EDUCATION = "Computer Science Engineering Graduate - JNTU, 2022."
+
+export const ACHIEVEMENTS =[
+  { value: "70%", label: "Manual effor reduced" },
+  { value: "140%", label: "Communication efficiency boost" },
+  { value: "2+", label: "Years of production experience" },
+  {value: "10+", label: "Systems built and deployed" },
+]

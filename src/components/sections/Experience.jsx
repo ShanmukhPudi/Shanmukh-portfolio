@@ -1,5 +1,5 @@
 import { motion } from "framer-motion"
-import { EXPERIENCE, EDUCATION } from "../../constants"
+import { EXPERIENCE, EDUCATION, ACHIEVEMENTS } from "../../constants"
 
 const containerVariants ={
     hidden: {},
@@ -143,6 +143,29 @@ const Experience = () => {
                     </div>
                 </motion.div>
 
+            </motion.div>
+
+            {/*achievements strip*/}
+            <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0}}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6 }}
+                className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 pt-12 border-t border-[#e4e4e4] dark:border-[#1f1f1f]"
+            >
+                {ACHIEVEMENTS.map((item) => (
+                    <div 
+                        key={item.label}
+                        className="flex flex-col items-center text-center gap-2"
+                    >
+                        <span className="text-3xl md:text-4xl font-bold font-mono text-[#008f5a] dark:text-[#00ff9f]">
+                            {item.value}
+                        </span>
+                        <span className="text-sm text-[#777777] darkLtext-[#6b6b6b] leading-snug">
+                            {item.label}
+                        </span>
+                    </div>
+                ))}
             </motion.div>
         </section>
     )
