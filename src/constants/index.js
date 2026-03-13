@@ -126,3 +126,26 @@ export const PROJECTS = [
     image: null,
   },
 ]
+
+export const EXPERIENCE = [
+  {
+    id: 1,
+    role: "Software Engineer",
+    company: "Mohan Marketing Vizag Private Limited",
+    location: "Visakhapatnam, India",
+    duration: "Oct 2023 - Present",
+    current: true,
+    summary: "Building automation systems, internal tools and enterprise workflows that streamline operations and reduce manual workload across teams.",
+  },
+  {
+    id: 2,
+    role: "Research Analyst",
+    company: "Mind Brink",
+    location: "Vijayawada, India",
+    duration: "July 2022 - Feb 2023",
+    current: false,
+    summary: "Conducted data research and analysis, managed a team of 10, and delivered actionable insights to senior management.",
+  },
+]
+
+export const EDUCATION = "Computer Science Engineering Graduate - JNTU, 2022."
