@@ -30,17 +30,17 @@ const Navbar = ({ isDark, toggleTheme }) => {
           : "bg-[#f9f9f9] dark:bg-[#0a0a0a]"
         }`}
     >
-      <div className="w-full px-6 md:px-10">
+      <div className="w-full">
       <nav
         role="navigation"
         aria-label="Main navigation"
-        className="max-w-6xl mx-auto flex items-center justify-between py-5"
+        className="w-full mx-auto flex items-center justify-between py-9 px-8 md:px-12"
       >
 
         {/* Logo */}
         <a 
           href="#hero"
-          className="font-mono text-[#008f5a] dark:text-[#00ff9f] text-xl font-bold tracking-tight hover:opacity-80 transition-opacity"
+          className="font-mono text-[#008f5a] dark:text-[#00ff9f] text-2xl font-bold tracking-tight hover:opacity-80 transition-opacity"
           aria-label="Shanmukh - Back to top"
         >
           &gt;_ shanmukh
@@ -49,13 +49,13 @@ const Navbar = ({ isDark, toggleTheme }) => {
         {/* Desktop Nav Links */}
         <ul
           role="list"
-          className="hidden md:flex items-center gap-8"
+          className="hidden md:flex items-center gap-12 lg:gap-16"
         >
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
               <a 
                 href={link.href}
-                className="text-base font-medium text-[#111111] dark:text-[#e8e8e8] hover:text-[#008f5a] dark:hover:text-[#00ff9f] transition-colors duration-200"
+                className="text-lg font-medium text-[#111111] dark:text-[#e8e8e8] hover:text-[#008f5a] dark:hover:text-[#00ff9f] transition-colors duration-200"
               >
                 {link.label}
               </a>
@@ -64,12 +64,12 @@ const Navbar = ({ isDark, toggleTheme }) => {
         </ul>
 
         {/* Right Side — Theme Toggle + Mobile Menu */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-6 md:gap-8">
 
           {/* Theme Toggle */}
           <button
             onClick={toggleTheme}
-            className="px-3 py-1.5 border border-[#008f5a] dark:border-[#00ff9f] text-black dark:text-[#00ff9f] font-mono text-xs rounded hover:bg-[#008f5a] dark:hover:bg-[#00ff9f] hover:text-white dark:hover:text-black transition-all duration-200"
+            className="px-4 py-2 text-black dark:text-[#00ff9f] font-mono text-sm rounded hover:bg-[#008f5a] dark:hover:bg-[#00ff9f] hover:text-white dark:hover:text-black transition-all duration-200"
             aria-label="Toggle dark and light mode"
           >
             {isDark ? "[ light ]" : "[ dark ]"}

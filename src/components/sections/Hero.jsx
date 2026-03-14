@@ -47,14 +47,14 @@ const Hero = () => {
         <section 
             id="hero"
             aria-label="Hero section"
-            className="relative min-h-screen flex items-center justify-center w-full px-6"
+            className="relative min-h-screen flex items-center justify-center w-full px-6 md:px-20"
         >
-            <div className="max-w-6xl mx-auto w-full flex items-center justify-between gap-16">
+            <div className="w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-20 py-32">
                 <motion.div 
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
-                    className="flex flex-col flex-1 max-w-xl"
+                    className="flex flex-col flex-1 max-w-4xl min-h-[300px] py-10"
                 >
                 
                 {/* terminal greeting line */}
@@ -67,7 +67,7 @@ const Hero = () => {
                 {/* Name */}
                 <motion.h1 
                     variants={itemVariants}
-                    className="text-4xl md:text-6xl font-bold text-[#111111] dark:text-[#e8e8e8] leading-none tracking-tight mb-4"
+                    className="text-4xl md:text-6xl font-bold text-[#111111] dark:text-[#e8e8e8] leading-none tracking-tight mt-4"
                 >
                     {PERSONAL.name}
                 </motion.h1>
@@ -90,7 +90,7 @@ const Hero = () => {
                 {/* tagline */}
                 <motion.p 
                     variants={itemVariants} 
-                    className="text-lg md:text-xl text-[#777777] dark:text-[#6b6b6b] max-w-xl leading-relaxed mb-10"
+                    className="text-lg md:text-xl text-[#777777] dark:text-[#6b6b6b] max-w-2xl leading-relaxed mt-4"
                 >
                     {PERSONAL.tagline}
                 </motion.p>
@@ -98,21 +98,24 @@ const Hero = () => {
                 {/* CTA buttons */}
                 <motion.div 
                     variants={itemVariants} 
-                    className="flex flex-wrap gap-6 mb-12"
+                    className="flex flex-wrap items-center gap-12 mb-8"
+                    style={{ marginTop: '2rem' }}
                 >
                     <Button 
                         href="#projects"
-                        variant="primary"
+                        variant="outline"
                         aria-label="View my projects"
+                        style={{ padding: "1rem 2.5rem", fontSize: "1.1rem"}}
                     >
-                        View Projects
+                        View Projects ↗
                     </Button>
                     <Button 
                         href="#contact"
                         variant="outline"
                         aria-label="Contact Shanmukh"
+                        style={{ padding: "1rem 2.5rem", fontSize: "1.1rem" }}
                     >
-                        Contact Me
+                        Contact Me ↗
                     </Button>
                 </motion.div>
 
@@ -124,7 +127,8 @@ const Hero = () => {
                         animate="visible"
                         role="status"
                         aria-label="Currently available for work"
-                        className="flex items-center gap-2"
+                        className="flex items-center gap-3"
+                        style={{ marginTop: '1.5rem' }}
                     >
                         <span className="relative flex h-2.5 w-2.5">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00ff9f] opacity-75"></span>
@@ -143,7 +147,7 @@ const Hero = () => {
                 variants={fadeVariants}
                 initial="hidden"
                 animate="visible"
-                className="relative w-72 md:w-96 flex-shrink-0"
+                className="relative w-80 md:w-[420px] flex-shrink-0"
             >
                 {/* glow effect behind photo */}
                 <div 
