@@ -3,6 +3,7 @@ import About from "../components/sections/About"
 import TechStack from "../components/sections/TechStack"
 import Projects from "../components/sections/Projects"
 import Experience from "../components/sections/Experience"
+import Contact from "../components/sections/Contact"
 import SectionDivider from "../components/ui/Sectiondivider"
 
 const HomeContainer = () => {
@@ -22,6 +23,9 @@ const HomeContainer = () => {
             <SectionDivider />
             <Experience />
             <SectionDivider />
+            <div className="w-full bg-[#f4f4f4] dark:bg-[#0d0d0d]">
+                <Contact />
+            </div>
         </main>
     )
 }
