@@ -20,7 +20,11 @@ export const TYPED_STRINGS = [
 ]
 
 export const ABOUT = {
-    bio: "I'm Shanmukh, a Software Engineer based in Visakhapatnam, India. I specialize in building automation systems, enterprise workflows, and full-stack web application that actually solve real problems. Over the past couple of years I've gone from Google sheets and App Scripts to full production-grade systems - and I'm just getting started. I enjoy turning messy, manual processes into clean, scalable products that teams love using.",
+    bio: ["Hey, I'm Shanmukh — a Software Engineer from Visakhapatnam, India, I started out wrangling Google Sheets and App Scripts, convincing spreadsheets to do things they were never meant to do, and somewhere along the way that turned into building full-on production systems.",
+    "Funny how that happens. I specialize in automation, enterprise workflows, and full-stack web apps — basically, if a process is slow, messy, or held together by copy-paste and prayers, I want to fix it. I genuinely enjoy the unglamorous stuff: the chaotic workflows, 'the we just use a spreadsheet for that' moments, the systems that somehow run a business but terrify everyone who touches them. That's my playground.",
+    "Over the past couple of years I've gone from scripting small fixes to shipping real products that real teams actually use — and honestly, I'm just warming up. I don't chase trends or stuff my stack with buzzwords; I just pick whatever tools get the job done cleanly. The goal is always the same — turn the messy and manual into something smooth and scalable. When the software works so well that nobody notices it, that's the win."],
+    
+    // "I'm Shanmukh, a Software Engineer based in Visakhapatnam, India. I specialize in building automation systems, enterprise workflows, and full-stack web application that actually solve real problems. Over the past couple of years I've gone from Google sheets and App Scripts to full production-grade systems - and I'm just getting started. I enjoy turning messy, manual processes into clean, scalable products that teams love using.",
     strengths: [
         {
             id: 1,

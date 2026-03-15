@@ -11,8 +11,10 @@ const HomeContainer = () => {
         <main>
             <Hero />
             <SectionDivider />
-            <div className="w-full bg-[#f4f4f4] dark:bg-[#0d0d0d]">
+            <div className="w-full bg-[#f4f4f4] dark:bg-[#0d0d0d] flex justify-center">
+                <div style={{ width: "100%", maxWidth: "1550px", padding: "0 3rem" }}>
             <About />
+                </div>
             </div>
             <SectionDivider />
             <TechStack />
