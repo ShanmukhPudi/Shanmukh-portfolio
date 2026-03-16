@@ -26,9 +26,18 @@ const itemVariants = {
 }
 
 const levelColors = {
-    Proficient: "text-[#008f5a] dark:text-[#00ff9f] border-[#008f5a] dark:border-[#00ff9f]",
-    Comfortable: "text-[#0077aa] dark:text-[#00cfff] border-[#0077aa] dark:border-[#00cfff]",
-    Learning: "text-[#777777] dark:text-[#6b6b6b] border-[#777777] dark-border-[#6b6b6b]",
+    Proficient: {
+        ping: "bg-[#00ff9f]",
+        dot: "bg-[#008f5a] dark:bg-[#00ff9f]",
+    },
+    Comfortable: {
+        ping: "bg-[#00cfff]",
+        dot: "bg-[#0077aa] dark:bg-[#00cfff]"
+    },
+    Learning: {
+        ping: "bg-[#6b6b6b]",
+        dot: "bg-[#555555] dark:bg-[#6b6b6b]",
+    },
 }
 
 const TechStack = () => {

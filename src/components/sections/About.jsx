@@ -70,7 +70,7 @@ const About = () => {
                 viewport={{ once: true, amount:0.2 }}
                 className="flex-1 flex flex-col gap-10"
             >
-                <motion.p 
+                <motion.div 
                     variants={itemVariants}
                     className="text-lg text-[#555555] dark:text-[#a0a0a0] leading-relaxed"
                     style={{ paddingTop: "1rem" }}
@@ -83,7 +83,7 @@ const About = () => {
                             {paragraph}
                         </p>
                     ))}
-                </motion.p>
+                </motion.div>
 
                 {/* resume download button */}
                 <motion.div variants={itemVariants}>
@@ -123,7 +123,7 @@ const About = () => {
                             borderRadius: "1rem",
                             border: "1px solid",
                         }}
-                        className="flex flex-col gap-4 border-[#e4e4e4] dark:border-[#1f1f1f] bg-white dark:bg-[#111111] cursor-default group"
+                        className="flex flex-col gap-4 border-[#e4e4e4] dark:border-[#1f1f1f] bg-[#111111] dark:bg-[#111111] cursor-default group"
                     >
                         <span 
                             aria-hidden="true"
@@ -131,7 +131,7 @@ const About = () => {
                         >
                             {strength.icon}
                         </span>
-                        <h3 className="text-base font-semibold text-[#111111] dark:text-[#e8e8e8] group-hover:text-[#008f5a] dark:group-hover:text-[#00ff9f] transition-colors duration-200">
+                        <h3 className="text-base font-semibold text-[#e8e8e8] dark:text-[#e8e8e8] group-hover:text-[#008f5a] dark:group-hover:text-[#00ff9f] transition-colors duration-200">
                             {strength.title}
                         </h3>
                         <p className="text-sm text-[#777777] dark:text-[#6b6b6b] leading-relaxed">
