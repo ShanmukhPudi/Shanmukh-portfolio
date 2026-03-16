@@ -24,21 +24,26 @@ const Experience = () => {
         <section 
             id="experience"
             aria-label="Experience section"
-            className="py-32 px-12 md:px-20 max-w-6xl mx-auto w-full"
+            style={{ padding: "6rem 0" }}
+            className="w-full"
         >
+            <div style={{ width: "100%", maxWidth: "1500px", margin: "0 auto", padding: "0 3rem" }}></div>
             {/*section header*/}
             <motion.div 
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.6 }}
-                className="mb-16"
+                style={{ marginBottom: "4rem" }}
+                // className="mb-16"
             >
                 <span className="font-mono text-sm text-[#008f5a] dark:text-[#00ff9f] tracking-widest uppercase">
                     {">_ experience"}
                 </span>
-                <h2 className="text-4xl md:text-5xl font-bold text-[#ffffff] dark:text-[#e8e8e8 mt-3]">
-                    Where I Have Worked
+                <h2 
+                    style={{ marginTop: "1.5rem" }}
+                    className="text-4xl md:text-5xl font-bold text-[#ffffff] dark:text-[#e8e8e8 mt-3]">
+                        Where I Have Worked
                 </h2>
             </motion.div>
 
@@ -53,38 +58,72 @@ const Experience = () => {
                 {/*vertical line*/}
                 <div 
                     aria-label="true"
-                    className="absolute left-0 top-2 bottom-2 w-px bg-gradient-to-b from-[#008f5a] dark:from-[#00ff9f] via-[#e4e4e4] dark:via-[#1f1f1f] to transparent"
+                    style={{
+                        position: "absolute",
+                        left: "0",
+                        top: "0.5rem",
+                        bottom: "1rem",
+                        width: "1px",
+                        background: "linear-gradient(to bottom, #00ff9f, #008f5a, #1f1f1f)",
+                    }}
                 />
 
                 {EXPERIENCE.map((job) => (
                     <motion.div 
                         key={job.id}
                         variants={itemVariants}
-                        className="relative pl-10 pb-16 last:pb-0"
+                        style={{ position: "relative", paddingLeft: "2.5rem", paddingBottom: "3rem" }}
+                        // className="relative pl-10 pb-16 last:pb-0"
                     >
                         {/*timeline dot*/}
                         <div 
                             aria-hidden="true"
-                            className="absolute left-0 top-2 -translate-x-1/2"
+                            style={{
+                                position: "absolute",
+                                left: "0",
+                                top: "0.4rem",
+                                transform: "translateX(-50%)",
+                            }}
+                            // className="absolute left-0 top-2 -translate-x-1/2"
                         >
-                            <span className="relative flex h-3 w-3">
+                            {/* className="relative flex h-3 w-3" */}
+                            <span style={{ position: "relative", display: "flex", width: "0.75rem", height: "0.75rem" }}>
                                 {job.current && (
-                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00ff9f] opacity-75" />
+                                    <span 
+                                    style={{ position: "absolute", inset: 0, borderRadius: "999px", background: "#00ff9f", opacity: 0.75}}
+                                    //  absolute inline-flex h-full w-full rounded-full bg-[#00ff9f] opacity-75
+                                    className="animate-ping" />
                                 )}
-                                <span className={`relative inline-flex rounded-full h-3 w-3 ${
-                                    job.current
-                                        ? "bg-[#008f5a] dark:bg-[#00ff9f]"
-                                        : "bg-[#e4e4e4] dark:bg-[#1f1f1f] border border-[#008f5a] dark:border-[#00ff9f]" 
-                                }`}/>
+                                <span style={{
+                                    position: "relative",
+                                    display: "inline-flex",
+                                    borderRadius: "999px",
+                                    width: "0.75rem",
+                                    height: "0.75rem",
+                                    background: job.current ? "#008f5a" : "transparent",
+                                    border: "1px solid #008f5a",
+                                }}
+                                className={job.current? "dark:bg-[#00ff9f]" : ""}
+                                // {`relative inline-flex rounded-full h-3 w-3 ${
+                                //     job.current
+                                //         ? "bg-[#008f5a] dark:bg-[#00ff9f]"
+                                //         : "bg-[#e4e4e4] dark:bg-[#1f1f1f] border border-[#008f5a] dark:border-[#00ff9f]"}`}
+                                
+                                />
                             </span>
                         </div>
 
                         {/*content*/}
-                        <div className="p-8 rounded-2xl border border-[#e4e4e4] dark:border-[#1f1f1f] bg-white dark:bg-[#111111] hover:border-[#008f5a] dark:hover:border-[#00ff9f] transition-all duration-300 group">
+                        <div style={{ paddingLeft: "1rem" }}>
+                        {/* <div className="p-8 rounded-2xl border border-[#e4e4e4] dark:border-[#1f1f1f] bg-white dark:bg-[#111111] hover:border-[#008f5a] dark:hover:border-[#00ff9f] transition-all duration-300 group"> */}
                             {/*top row*/}
-                            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                            <div 
+                                style={{ marginBottom: "0.5rem" }}
+                                className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                                 <div>
-                                    <h3 className="text-xl font-bold text-[#111111] dark:text-[#e8e8e8] group-hover:text-[#008f5a] dark:group-hover:text-[#00ff9f] transition-colors duration-200">
+                                    <h3 
+                                        style={{ marginBottom: "0.25rem" }}
+                                        className="text-xl font-bold text-[#111111] dark:text-[#e8e8e8] group-hover:text-[#008f5a] dark:group-hover:text-[#00ff9f] transition-colors duration-200">
                                         {job.role}
                                     </h3>
                                     <p className="text-base text-[#555555] dark:text-[#a0a0a0] font-medium">
@@ -98,15 +137,17 @@ const Experience = () => {
                                         {job.duration}
                                     </span>
                                     {job.current && (
-                                        <span className="text-xs font-mono px-2 py-0.5 rounded-full bg-[#008f5a] dark:bg-[#00ff9f] text-white dark:text-black">
-                                            Current
+                                        <span className="text-xs font-mono px-2 py-0.5 rounded-full text-black dark:text-[#00ff9f]">
+                                            ⏺ Current
                                         </span>
                                     )}
                                 </div>
                             </div>
 
                             {/*location*/}
-                            <p className="text-sm font-mono text-[#777777] dark:text-[#6b6b6b] mb-4">
+                            <p 
+                                style={{ marginBottom: "0.75rem" }}
+                                className="text-sm font-mono text-[#777777] dark:text-[#00ff9f] mb-4">
                                 ⌖ {job.location}
                             </p>
 
@@ -122,19 +163,30 @@ const Experience = () => {
                 {/*education*/}
                 <motion.div 
                     variants={itemVariants}
-                    className="relative pl-10"
+                    style={{ position: "relative", paddingLeft: "2.5rem" }}
                 >
                     {/*timeline dot*/}
                     <div 
                         aria-hidden="true"
-                        className="absolute left-0 top-2 -translate-x-1/2"
-                    >
-                        <span className="relative inline-flex rounded-full h-3 w-3 bg-[#e4e4e4] dark:bg-[#1f1f1f] border border-[#008f5a] dark:border-[#00ff9f]" />
-                    </div>
+                        style={{
+                            position: "absolute",
+                            left: "0",
+                            top: "0.4rem",
+                            transform: "translateX(-50%)",
+                            display: "inline-flex",
+                            borderRadius: "999px",
+                            width: "0.75rem",
+                            height: "0.75rem",
+                            background: "transparent",
+                            border: "2px solid #008f5a",
+                        }}/>
 
                     {/*content*/}
-                    <div className="p-8 rounded-2xl border border-[#e4e4e4] dark:border-[#1f1f1f] bg-white dark:bg-[#111111] hover:border-[#008f5a] dark:hover:border-[#00ff9f] transition-all duration-300">
-                        <p className="font-mono text-sm text-[#777777] dark:text-[#6b6b6b] mb-2">
+                    <div style={{ paddingLeft: "1rem" }}>
+                        <p 
+                            style={{ marginBottom: "0.375rem" }}
+                            className="font-mono text-sm text-[#777777] dark:text-[#6b6b6b] uppercase tracking-widest"
+                        >
                             Education
                         </p>
                         <p className="text-[#111111] dark:text-[#e8e8e8] font-medium">
@@ -151,7 +203,15 @@ const Experience = () => {
                 whileInView={{ opacity: 1, y: 0}}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.6 }}
-                className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 pt-12 border-t border-[#e4e4e4] dark:border-[#1f1f1f]"
+                style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(4, 1fr)",
+                    gap: "2rem",
+                    marginTop: "2rem",
+                    paddingTop: "3rem",
+                    borderTop: "1px solid",
+                }}
+                className="border-[#e4e4e4] dark:border-[#1f1f1f]"
             >
                 {ACHIEVEMENTS.map((item) => (
                     <div 

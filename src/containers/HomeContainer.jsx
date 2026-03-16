@@ -29,7 +29,11 @@ const HomeContainer = () => {
                 </div>
             </div>
             <SectionDivider />
-            <Experience />
+            <div className="w-full flex justify-center">
+                <div style={{ width: "100%", maxWidth: "1500px", padding: "0 3rem" }}>
+                    <Experience />
+                </div>
+            </div>
             <SectionDivider />
             <div className="w-full bg-[#f4f4f4] dark:bg-[#0d0d0d]">
                 <Contact />
