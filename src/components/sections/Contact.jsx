@@ -43,8 +43,10 @@ const Contact = () => {
         <section 
             id="contact"
             aria-label="Contact section"
-            className="py-32 px-12 md:px-20 max-w-6xl mx-auto w-full"
+            style={{ padding: "6rem 0" }}
+            className="w-full"
         >
+          <div style={{ width: "100%", maxWidth: "1200px", margin: "0 auto", padding: "0 3rem"}}>
 
             {/*section header*/}
             <motion.div 
@@ -52,12 +54,14 @@ const Contact = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.6 }}
-                className="mb-16"
+                style={{ marginBottom: "4rem" }}
             >
                 <span className="font-mono text-sm text-[#008f5a] dark:text-[#00ff9f] tracking-widest uppercase">
                     {">_ contact"}
                 </span>
-                <h2 className="text-4xl md:text-5xl font-bold text-[#111111] dark:text-[#e8e8e8] mt-3 mb-4">
+                <h2 
+                  style={{ marginTop: "1.5rem", marginBottom: "1rem" }}
+                  className="text-4xl md:text-5xl font-bold text-[#111111] dark:text-[#e8e8e8]">
                     Let's Work Together
                 </h2>
                 <p className="text-lg text-[#555555] dark:text-[#a0a0a0] max-w-xl">
@@ -65,7 +69,10 @@ const Contact = () => {
                 </p>
             </motion.div>
             
-            <div className="flex flex-col md:flex-row gap-16">
+            <div 
+              className="flex flex-col md:flex-row gap-16"
+              style={{ alignItems: "flex-start" }}
+            >
 
         {/* LEFT — Form */}
         <motion.div
@@ -76,7 +83,7 @@ const Contact = () => {
           className="flex-1 flex flex-col gap-6"
         >
           {/* Name */}
-          <motion.div variants={itemVariants} className="flex flex-col gap-2">
+          <motion.div variants={itemVariants} style={{ display: "flex", flexDirection: "column", gap: "0.625rem" }}>
             <label
               htmlFor="name"
               className="font-mono text-sm text-[#555555] dark:text-[#a0a0a0]"
@@ -91,12 +98,19 @@ const Contact = () => {
               onChange={handleChange}
               placeholder="Your name"
               aria-required="true"
-              className="px-4 py-3 rounded-lg border border-[#e4e4e4] dark:border-[#1f1f1f] bg-white dark:bg-[#111111] text-[#111111] dark:text-[#e8e8e8] font-mono text-sm placeholder-[#aaaaaa] dark:placeholder-[#444444] focus:outline-none focus:border-[#008f5a] dark:focus:border-[#00ff9f] transition-colors duration-200"
+              style={{
+                padding: "0.875rem 1.25rem",
+                borderRadius: "0.625rem",
+                border: "1px solid",
+                fontSize: "0.9rem",
+                outline: "none",
+              }}
+              className="border-[#e4e4e4] dark:border-[#1f1f1f] bg-white dark:bg-[#111111] text-[#111111] dark:text-[#e8e8e8] font-mono placeholder-[#aaaaaa] dark:placeholder-[#444444] focus:border-[#008f5a] dark:focus:border-[#00ff9f] transition-colors duration-200"
             />
           </motion.div>
 
           {/* Email */}
-          <motion.div variants={itemVariants} className="flex flex-col gap-2">
+          <motion.div variants={itemVariants} style={{ display: "flex", flexDirection: "column", gap: "0.625rem" }}>
             <label
               htmlFor="email"
               className="font-mono text-sm text-[#555555] dark:text-[#a0a0a0]"
@@ -111,12 +125,19 @@ const Contact = () => {
               onChange={handleChange}
               placeholder="your@email.com"
               aria-required="true"
-              className="px-4 py-3 rounded-lg border border-[#e4e4e4] dark:border-[#1f1f1f] bg-white dark:bg-[#111111] text-[#111111] dark:text-[#e8e8e8] font-mono text-sm placeholder-[#aaaaaa] dark:placeholder-[#444444] focus:outline-none focus:border-[#008f5a] dark:focus:border-[#00ff9f] transition-colors duration-200"
+              style={{
+                padding: "0.875rem 1.25rem",
+                borderRadius: "0.625rem",
+                border: "1px solid",
+                fontSize: "0.9rem",
+                outline: "none"
+              }}
+              className="border-[#e4e4e4] dark:border-[#1f1f1f] bg-white dark:bg-[#111111] text-[#111111] dark:text-[#e8e8e8] font-mono placeholder-[#aaaaaa] dark:placeholder-[#444444] focus:border-[#008f5a] dark:focus:border-[#00ff9f] transition-colors duration-200"
             />
           </motion.div>
 
           {/* Message */}
-          <motion.div variants={itemVariants} className="flex flex-col gap-2">
+          <motion.div variants={itemVariants} style={{ display: "flex", flexDirection: "column", gap: "0.625rem" }}>
             <label
               htmlFor="message"
               className="font-mono text-sm text-[#555555] dark:text-[#a0a0a0]"
@@ -131,7 +152,15 @@ const Contact = () => {
               onChange={handleChange}
               placeholder="Tell me about your project..."
               aria-required="true"
-              className="px-4 py-3 rounded-lg border border-[#e4e4e4] dark:border-[#1f1f1f] bg-white dark:bg-[#111111] text-[#111111] dark:text-[#e8e8e8] font-mono text-sm placeholder-[#aaaaaa] dark:placeholder-[#444444] focus:outline-none focus:border-[#008f5a] dark:focus:border-[#00ff9f] transition-colors duration-200 resize-none"
+              style={{ 
+                padding: "0.875rem 1.25rem",
+                borderRadius: "0.625rem",
+                border: "1px solid",
+                fontSize: "0.9rem",
+                outline: "none",
+                resize: "none",
+              }}
+              className="border-[#e4e4e4] dark:border-[#1f1f1f] bg-white dark:bg-[#111111] text-[#111111] dark:text-[#e8e8e8] font-mono placeholder-[#aaaaaa] dark:placeholder-[#444444] focus:border-[#008f5a] dark:focus:border-[#00ff9f] transition-colors duration-200"
             />
           </motion.div>
 
@@ -141,7 +170,14 @@ const Contact = () => {
               onClick={handleSubmit}
               disabled={!isFormValid}
               aria-label="Send message via email"
-              className={`px-8 py-4 font-mono text-sm rounded transition-all duration-200
+              style={{
+                padding: "1rem 2.5rem",
+                fontSize: "0.9rem",
+                borderRadius: "0.625rem",
+                border: "none",
+                cursor: isFormValid ? "pointer" : "not-allowed",
+              }}
+              className={`font-mono font-semibold
                 ${isFormValid
                   ? "bg-[#008f5a] dark:bg-[#00ff9f] text-white dark:text-black hover:opacity-80 cursor-pointer"
                   : "bg-[#e4e4e4] dark:bg-[#1f1f1f] text-[#aaaaaa] dark:text-[#444444] cursor-not-allowed"
@@ -158,7 +194,12 @@ const Contact = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          className="flex flex-col gap-6 md:w-72"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "1.25rem",
+            minWidth: "280px",
+          }}
         >
           <motion.p
             variants={itemVariants}
@@ -172,11 +213,24 @@ const Contact = () => {
             variants={itemVariants}
             href={`mailto:${PERSONAL.email}`}
             aria-label="Send email to Shanmukh"
-            className="flex items-center gap-4 p-5 rounded-xl border border-[#e4e4e4] dark:border-[#1f1f1f] bg-white dark:bg-[#111111] hover:border-[#008f5a] dark:hover:border-[#00ff9f] transition-all duration-300 group"
+            whileHover={{ y: -4, boxShadow: "0 12px 32px rgba(0, 143, 90, 0.12)" }}
+            transition={{ duration: 0.25 }}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "1rem",
+              padding: "1.25rem 1.5rem",
+              borderRadius: "0.875rem",
+              border: "1px solid",
+              textDecoration: "none",
+            }}
+            className="border-[#e4e4e4] dark:border-[#1f1f1f] bg-white dark:bg-[#111111] group"
           >
-            <span aria-hidden="true" className="text-xl">✉</span>
+            <span aria-hidden="true" style={{ fontSize: "1.25rem" }}>✉</span>
             <div>
-              <p className="text-sm font-medium text-[#111111] dark:text-[#e8e8e8] group-hover:text-[#008f5a] dark:group-hover:text-[#00ff9f] transition-colors duration-200">
+              <p 
+                style={{ fontSize: "0.9rem", fontWeight: "600", marginBottom: "0.2rem"}}
+                className="text-[#111111] dark:text-[#e8e8e8] group-hover:text-[#008f5a] dark:group-hover:text-[#00ff9f] transition-colors duration-200">
                 Email
               </p>
               <p className="text-xs font-mono text-[#777777] dark:text-[#6b6b6b]">
@@ -192,11 +246,24 @@ const Contact = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Visit Shanmukh's GitHub profile"
-            className="flex items-center gap-4 p-5 rounded-xl border border-[#e4e4e4] dark:border-[#1f1f1f] bg-white dark:bg-[#111111] hover:border-[#008f5a] dark:hover:border-[#00ff9f] transition-all duration-300 group"
+            whileHover={{ y: -4, boxShadow: "0 12px 32px rgba(0, 143, 90, 0.12)" }}
+            transition={{ duration: 0.25 }}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: " 1rem",
+              padding: "1.25rem 1.5rem",
+              borderRadius: "0.875rem",
+              border: "1px solid",
+              textDecoration: "none",
+            }}
+            className="border-[#e4e4e4] dark:border-[#1f1f1f] bg-white dark:bg-[#111111] group"
           >
-            <span aria-hidden="true" className="text-xl">🐙</span>
+            <span aria-hidden="true" style={{ fontSize: "1.25rem" }}>🐙</span>
             <div>
-              <p className="text-sm font-medium text-[#111111] dark:text-[#e8e8e8] group-hover:text-[#008f5a] dark:group-hover:text-[#00ff9f] transition-colors duration-200">
+              <p 
+                style={{ fontSize: "0.9rem", fontWeight: "600", marginBottom: "0.2rem" }}
+                className="text-[#111111] dark:text-[#e8e8e8] group-hover:text-[#008f5a] dark:group-hover:text-[#00ff9f] transition-colors duration-200">
                 GitHub
               </p>
               <p className="text-xs font-mono text-[#777777] dark:text-[#6b6b6b]">
@@ -212,11 +279,24 @@ const Contact = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Visit Shanmukh's LinkedIn profile"
-            className="flex items-center gap-4 p-5 rounded-xl border border-[#e4e4e4] dark:border-[#1f1f1f] bg-white dark:bg-[#111111] hover:border-[#008f5a] dark:hover:border-[#00ff9f] transition-all duration-300 group"
+            whileHover={{ y: -4, boxShadow: "0 12px 32px rgba(0, 143, 90, 0.12)" }}
+            transition={{ duration: 0.25 }}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "1rem",
+              padding: "1.25rem 1.5rem",
+              borderRadius: "0.875rem",
+              border: "1px solid",
+              textDecoration: "none",
+            }}
+            className="border-[#e4e4e4] dark:border-[#1f1f1f] bg-white dark:bg-[#111111] group"
           >
-            <span aria-hidden="true" className="text-xl">💼</span>
+            <span aria-hidden="true" style={{ fontSize: "1.25rem" }}>💼</span>
             <div>
-              <p className="text-sm font-medium text-[#111111] dark:text-[#e8e8e8] group-hover:text-[#008f5a] dark:group-hover:text-[#00ff9f] transition-colors duration-200">
+              <p 
+                style={{ fontSize: "0.9rem", fontWeight: "600", marginBottom: "0.2rem" }}
+                className="text-[#111111] dark:text-[#e8e8e8] group-hover:text-[#008f5a] dark:group-hover:text-[#00ff9f] transition-colors duration-200">
                 LinkedIn
               </p>
               <p className="text-xs font-mono text-[#777777] dark:text-[#6b6b6b]">
@@ -226,6 +306,7 @@ const Contact = () => {
           </motion.a>
 
         </motion.div>
+        </div>
       </div>
     </section>
   )

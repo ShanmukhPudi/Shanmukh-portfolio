@@ -30,7 +30,7 @@ const HomeContainer = () => {
             </div>
             <SectionDivider />
             <div className="w-full flex justify-center">
-                <div style={{ width: "100%", maxWidth: "1500px", padding: "0 3rem" }}>
+                <div style={{ width: "100%", maxWidth: "1500px", padding: "0 6rem" }}>
                     <Experience />
                 </div>
             </div>
