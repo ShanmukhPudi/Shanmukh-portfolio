@@ -3,6 +3,7 @@ import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import HomeContainer from "./containers/HomeContainer";
 import BackToTop from "./components/ui/BackToTop";
+import ScrollProgress from "./components/ui/ScrollProcress";
 
 function App() {
   const { isDark, toggleTheme } = useTheme()
@@ -13,6 +14,7 @@ return (
       <HomeContainer />
       <Footer />
       <BackToTop />
+      <ScrollProgress />
     </div>
   )
 }
