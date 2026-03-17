@@ -2,6 +2,7 @@ import { useTheme } from "./hooks/useTheme";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import HomeContainer from "./containers/HomeContainer";
+import BackToTop from "./components/ui/BackToTop";
 
 function App() {
   const { isDark, toggleTheme } = useTheme()
@@ -11,6 +12,7 @@ return (
       <Navbar isDark={isDark} toggleTheme={toggleTheme} />
       <HomeContainer />
       <Footer />
+      <BackToTop />
     </div>
   )
 }

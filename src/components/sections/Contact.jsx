@@ -104,6 +104,7 @@ const Contact = () => {
                 border: "1px solid",
                 fontSize: "0.9rem",
                 outline: "none",
+                transition: "border-color 0.2s",
               }}
               className="border-[#e4e4e4] dark:border-[#1f1f1f] bg-white dark:bg-[#111111] text-[#111111] dark:text-[#e8e8e8] font-mono placeholder-[#aaaaaa] dark:placeholder-[#444444] focus:border-[#008f5a] dark:focus:border-[#00ff9f] transition-colors duration-200"
             />
@@ -130,7 +131,8 @@ const Contact = () => {
                 borderRadius: "0.625rem",
                 border: "1px solid",
                 fontSize: "0.9rem",
-                outline: "none"
+                outline: "none",
+                transition: "border-color 0.2s",
               }}
               className="border-[#e4e4e4] dark:border-[#1f1f1f] bg-white dark:bg-[#111111] text-[#111111] dark:text-[#e8e8e8] font-mono placeholder-[#aaaaaa] dark:placeholder-[#444444] focus:border-[#008f5a] dark:focus:border-[#00ff9f] transition-colors duration-200"
             />
@@ -159,6 +161,7 @@ const Contact = () => {
                 fontSize: "0.9rem",
                 outline: "none",
                 resize: "none",
+                transition: "border-color 0.2s"
               }}
               className="border-[#e4e4e4] dark:border-[#1f1f1f] bg-white dark:bg-[#111111] text-[#111111] dark:text-[#e8e8e8] font-mono placeholder-[#aaaaaa] dark:placeholder-[#444444] focus:border-[#008f5a] dark:focus:border-[#00ff9f] transition-colors duration-200"
             />

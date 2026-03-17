@@ -42,7 +42,7 @@ const Experience = () => {
                 </span>
                 <h2 
                     style={{ marginTop: "1.5rem" }}
-                    className="text-4xl md:text-5xl font-bold text-[#ffffff] dark:text-[#e8e8e8 mt-3]">
+                    className="text-4xl md:text-5xl font-bold text-[#111111] dark:text-[#e8e8e8]">
                         Where I Have Worked
                 </h2>
             </motion.div>
