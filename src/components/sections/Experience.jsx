@@ -1,5 +1,6 @@
 import { motion } from "framer-motion"
 import { EXPERIENCE, EDUCATION, ACHIEVEMENTS } from "../../constants"
+import CountUp from "../ui/CountUp"
 
 const containerVariants ={
     hidden: {},
@@ -216,12 +217,27 @@ const Experience = () => {
                 {ACHIEVEMENTS.map((item) => (
                     <div 
                         key={item.label}
-                        className="flex flex-col items-center text-center gap-2"
+                        style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            textAlign: "center",
+                            gap: "0.5rem",
+                        }}
                     >
-                        <span className="text-3xl md:text-4xl font-bold font-mono text-[#008f5a] dark:text-[#00ff9f]">
-                            {item.value}
+                        <span 
+                            style={{ fontSize: "2.5rem", fontWeight: "700"}}
+                            className="font-mono"
+                        >
+                            <CountUp
+                                value={item.value}
+                                suffix={item.value.replace(/[0-9]/g, "")}
+                                duration={2000}/>
                         </span>
-                        <span className="text-sm text-[#777777] darkLtext-[#6b6b6b] leading-snug">
+                        <span 
+                            style={{ fontSize: "0.8rem", lineHeight: "1.4"}}
+                            className="text-sm text-[#777777] dark:text-[#6b6b6b]"
+                        >
                             {item.label}
                         </span>
                     </div>
