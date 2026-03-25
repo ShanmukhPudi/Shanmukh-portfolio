@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { Menu, X } from "lucide-react"
+import { href } from "react-router-dom"
 
 const NAV_LINKS = [
   { label: "About", href: "#about" },
@@ -21,6 +22,14 @@ const Navbar = ({ isDark, toggleTheme }) => {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  const handleNavClick = (e, href) => {
+    e.preventDefault()
+    const target = document.querySelector(href)
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" })
+    }
+  }
+
   return (
     <header
       role="banner"
@@ -40,6 +49,7 @@ const Navbar = ({ isDark, toggleTheme }) => {
         {/* Logo */}
         <a 
           href="#hero"
+          onClick={(e) => handleNavClick(e, "#hero")}
           className="font-mono text-[#008f5a] dark:text-[#00ff9f] text-2xl font-bold tracking-tight hover:opacity-80 transition-opacity"
           aria-label="Shanmukh - Back to top"
         >
@@ -55,6 +65,7 @@ const Navbar = ({ isDark, toggleTheme }) => {
             <li key={link.href}>
               <a 
                 href={link.href}
+                onClick={(e) => handleNavClick(e, link.href)}
                 className="text-lg font-medium text-[#111111] dark:text-[#e8e8e8] hover:text-[#008f5a] dark:hover:text-[#00ff9f] transition-colors duration-200"
               >
                 {link.label}
@@ -104,7 +115,10 @@ const Navbar = ({ isDark, toggleTheme }) => {
                 
                 <a 
                   href={link.href}
-                  onClick={() => setMenuOpen(false)}
+                  onClick={() => {
+                    handleNavClick(e, link.href)
+                    setMenuOpen(false)
+                  }}
                   className="text-sm font-medium text-[#111111] dark:text-[#e8e8e8] hover:text-[#008f5a] dark:hover:text-[#00ff9f] transition-colors duration-200"
                 >
                   {link.label}

@@ -3,6 +3,7 @@ import Button from "../ui/Button"
 import useTypewriter from "../../hooks/useTypewriter"
 import { motion } from "framer-motion"
 import profilePhoto from "../../assets/profile.jpg"
+// import NeonText from "../ui/NeonText"
 
 // Animation variants
 const containerVariants = {

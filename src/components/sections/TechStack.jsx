@@ -1,146 +1,196 @@
-import { motion } from "framer-motion"
-import { TECH_STACK } from "../../constants"
-
-const containerVariants = {
-    hidden: {},
-    visible: {
-        transition: {
-            staggerChildren: 0.1,
-        },
-    },
-}
-
-const itemVariants = {
-    hidden: {
-        opacity: 0,
-        y: 20,
-    },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: {
-            duration: 0.5,
-            ease: "easeOut",
-        },
-    },
-}
-
-const levelColors = {
-    Proficient: {
-        ping: "bg-[#00ff9f]",
-        dot: "bg-[#008f5a] dark:bg-[#00ff9f]",
-    },
-    Comfortable: {
-        ping: "bg-[#00cfff]",
-        dot: "bg-[#0077aa] dark:bg-[#00cfff]"
-    },
-    Learning: {
-        ping: "bg-[#6b6b6b]",
-        dot: "bg-[#555555] dark:bg-[#6b6b6b]",
-    },
-}
+import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import { TECH_STACK, CATEGORY_COLORS } from "../../constants"
+import HoneycombCluster from "../ui/HoneycombCluster"
 
 const TechStack = () => {
-    return (
-        <section 
-            id="tech-stack"
-            aria-label="Tech stack section"
-            className="py-32 px-12 md:px-20 max-w-6xl mx-auto w-full"
+  const [selected, setSelected] = useState("All")
+
+  const categories = ["All", ...TECH_STACK.map((g) => g.category)]
+
+  return (
+    <section
+      id="tech-stack"
+      aria-label="Tech stack section"
+      style={{ padding: "6rem 0" }}
+      className="w-full"
+    >
+      <div
+        style={{
+          width: "100%",
+          maxWidth: "1100px",
+          margin: "0 auto",
+          padding: "0 3rem",
+        }}
+      >
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6 }}
+          style={{ marginBottom: "3rem" }}
         >
-            {/* section header */}
-            <motion.div 
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.6 }}
-                className="mb-16"
+          <span
+            style={{ fontSize: "1.1rem" }}
+            className="font-mono text-[#008f5a] dark:text-[#00ff9f] tracking-widest uppercase"
+          >
+            {">_ tech stack"}
+          </span>
+          <h2
+            style={{ marginTop: "1.5rem" }}
+            className="text-4xl md:text-5xl font-bold text-[#111111] dark:text-[#e8e8e8]"
+          >
+            What I Work With
+          </h2>
+        </motion.div>
+
+        {/* Filter Tabs */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "0.75rem",
+            marginBottom: "4rem",
+          }}
+        >
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setSelected(cat)}
+              style={{
+                padding: "0.5rem 1.25rem",
+                borderRadius: "999px",
+                border: "1px solid",
+                fontSize: "0.8rem",
+                cursor: "pointer",
+                transition: "all 0.3s ease",
+                fontFamily: "JetBrains Mono, monospace",
+                background:
+                  selected === cat
+                    ? cat === "All"
+                      ? "#008f5a"
+                      : CATEGORY_COLORS[cat]?.border
+                    : "transparent",
+                borderColor:
+                  selected === cat
+                    ? cat === "All"
+                      ? "#008f5a"
+                      : CATEGORY_COLORS[cat]?.border
+                    : "#2a2a2a",
+                color:
+                  selected === cat
+                    ? "#000000"
+                    : "#6b6b6b",
+                boxShadow:
+                  selected === cat
+                    ? cat === "All"
+                      ? "0 0 12px rgba(0,143,90,0.4)"
+                      : `0 0 12px ${CATEGORY_COLORS[cat]?.glow}`
+                    : "none",
+              }}
             >
-                <span className="font-mono text-sm text-[#008f5a] dark:text-[#00ff9f] tracking-widest uppercase">
-                    {">_ tech stack"}
-                </span>
-                <h2 className="text-4xl md:text-5xl font-bold text-[#111111] dark:text-[#e8e8e8] mt-3">
-                    What I Work With
-                </h2>
-            </motion.div>
+              {cat}
+            </button>
+          ))}
+        </motion.div>
 
-            {/* categories */}
-            <div className="flex flex-col gap-16">
-                {TECH_STACK.map((group) => (
-                    <div key={group.category}>
+        {/* Honeycomb Grid */}
+        <motion.div
+          layout
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: selected === "All" ? "2rem" : "4rem",
+            justifyContent: "center",
+            alignItems: "flex-start",
+            transition: "gap 0.4s ease",
+          }}
+        >
+          <AnimatePresence mode="sync">
+            {TECH_STACK.map((group) => {
+              const color = CATEGORY_COLORS[group.category] || {
+                border: "#00ff9f",
+                glow: "rgba(0,255,159,0.3)",
+                text: "#00ff9f",
+              }
+              const isSelected = selected === group.category
+              const isAllSelected = selected === "All"
 
-                        {/*category label*/}
-                        <motion.h3 
-                            initial={{ opacity: 0, x: -20}}
-                            whileInView={{ opacity:1, x:0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5 }}
-                            className="font-mono text-sm text-[#777777] dark:text-[#6b6b6b] uppercase tracking-widest mb-8 pb-3 border-b border-[#e4e4e4] dark:border-[#1f1f1f]"
-                        >
-                            {group.category}
-                        </motion.h3>
+              return (
+                <motion.div
+                  key={group.category}
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{
+                    opacity: isAllSelected || isSelected ? 1 : 0.2,
+                    scale: isAllSelected || isSelected ? 1 : 0.95,
+                  }}
+                  transition={{ duration: 0.4, ease: "easeOut" }}
+                >
+                  <HoneycombCluster
+                    group={group}
+                    color={color}
+                    isSelected={isSelected}
+                    isAllSelected={isAllSelected}
+                  />
+                </motion.div>
+              )
+            })}
+          </AnimatePresence>
+        </motion.div>
 
-                        {/*skill cards*/}
-                        <motion.div 
-                            variants={containerVariants}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true, amount: 0.1 }}
-                            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6"
-                        >
-                            {group.skills.map((skill) => (
-                                <motion.div 
-                                    key={skill.name}
-                                    variants={itemVariants}
-                                    className="flex flex-col items-center gap-4 p-6 rounded-xl border border-[#e4e4e4] dark:border-[#1f1f1f] bg-white dark:bg-[#111111] hover:border-[#008f5a] dark:hover:border-[#00ff9f] transition-all duration-300 group cursor-default"
-                                >
-                                    {/*icon*/}
-                                    <img 
-                                        src={skill.icon}
-                                        alt={`${skill.name} logo`}
-                                        className={`w-10 h-10 object-contain group-hover:scale-110 transition-transform duration-300 ${skill.name === "GitHub" || skill.name === "Framer Motion" ? "dark:invert" : ""}
-                                        `}
-                                    />
-
-                                    {/*name*/}
-                                    <span className="text-sm font-medium text-[#111111] dark:text-[#e8e8e8] text-center">
-                                        {skill.name}
-                                    </span>
-
-                                    {/*level badge*/}
-                                    <span 
-                                        className={`text-xs font-mono px-2 py-0.5 rounded-full border ${levelColors[skill.level]}`}
-                                    >
-                                        {skill.level}
-                                    </span>
-                                </motion.div>
-                            ))}
-                        </motion.div>
-                    </div>
-                ))}
+        {/* Legend */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "1.5rem",
+            marginTop: "4rem",
+            paddingTop: "2rem",
+            borderTop: "1px solid",
+            alignItems: "center",
+          }}
+          className="border-[#e4e4e4] dark:border-[#1f1f1f]"
+        >
+          <span className="font-mono text-xs text-[#777777] dark:text-[#6b6b6b] uppercase tracking-widest">
+            Legend:
+          </span>
+          {Object.entries(CATEGORY_COLORS).map(([cat, color]) => (
+            <div
+              key={cat}
+              style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}
+            >
+              <span
+                style={{
+                  width: "10px",
+                  height: "10px",
+                  borderRadius: "2px",
+                  background: color.border,
+                  boxShadow: `0 0 6px ${color.glow}`,
+                  display: "inline-block",
+                }}
+              />
+              <span
+                style={{ fontSize: "0.75rem" }}
+                className="font-mono text-[#777777] dark:text-[#6b6b6b]"
+              >
+                {cat}
+              </span>
             </div>
-
-            {/*legend*/}
-            <motion.div 
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="flex flex-wrap gap-6 mt-16 pt-8 border-t border-[#e4e4e4] dark:border-[#1f1f1f]"
-            >
-                <span className="text-xs font-mono text-[#777777] dark:text-[#6b6b6b] ippercase tracking-widest">
-                    Legend:
-                </span>
-                {Object.entries(levelColors).map(([level, colors]) => (
-                    <span 
-                        key={level}
-                        className={`text-xs font-mono px-2 py-0.5 rounded-full border ${colors}`}
-                    >
-                        {level}
-                    </span>
-                ))}
-            </motion.div>
-        </section>
-    )
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  )
 }
 
 export default TechStack

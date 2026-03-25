@@ -164,3 +164,31 @@ export const ACHIEVEMENTS =[
   { value: "2+", label: "Years of production experience" },
   {value: "10+", label: "Systems built and deployed" },
 ]
+
+export const CATEGORY_COLORS = {
+  "Languages": {
+    border: "#3b82f6",
+    glow: "rgba(59, 130, 246, 0.4)",
+    text: "#3b82f6",
+  },
+  "Frameworks & Libraries": {
+    border: "#00ff9f",
+    glow: "rgba(0, 255, 159, 0.4)",
+    text: "#00ff9f",
+  },
+  "Databases": {
+    border: "#00cfff",
+    glow: "rgba(0, 207, 255, 0.4)",
+    text: "#00cfff",
+  },
+  "Tools & Cloud": {
+    border: "#a855f7",
+    glow: "rgba(168, 85, 247, 0.4)",
+    text: "#a855f7",
+  },
+  "Testing": {
+    border: "#f59e0b",
+    glow: "rgba(245, 158, 11, 0.4)",
+    text: "#f59e0b",
+  },
+}
