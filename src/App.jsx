@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence, MotionConfig } from "framer-motion";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import { useTheme } from "./hooks/useTheme";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
@@ -30,6 +31,7 @@ function App() {
 
   return (
     <MotionConfig reducedMotion="user">
+      <SpeedInsights />
       <div
         className={
           isUniverseB
