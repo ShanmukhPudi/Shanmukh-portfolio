@@ -9,17 +9,26 @@ const NAV_LINKS = [
   { label: "Contact", href: "#contact" },
 ]
 
-const Navbar = ({ isDark, toggleTheme }) => {
+const Navbar = ({ isDark, isUniverseB,toggleTheme }) => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
-    }
+    const handleScroll = () => setIsScrolled(window.scrollY > 20)
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  const handleNavClick = (e, href) => {
+    e.preventDefault()
+    const target = document.querySelector(href)
+    if (target) target.scrollIntoView({ behavior: "smooth" })
+  }
+
+  const getToggleLabel = () => {
+    if (isDark) return "[ Change Realm ]"
+    return "[ dark ]"
+  }
 
   return (
     <header
@@ -40,6 +49,7 @@ const Navbar = ({ isDark, toggleTheme }) => {
         {/* Logo */}
         <a 
           href="#hero"
+          onClick={(e) => handleNavClick(e, "#hero")}
           className="font-mono text-[#008f5a] dark:text-[#00ff9f] text-2xl font-bold tracking-tight hover:opacity-80 transition-opacity"
           aria-label="Shanmukh - Back to top"
         >
@@ -55,6 +65,7 @@ const Navbar = ({ isDark, toggleTheme }) => {
             <li key={link.href}>
               <a 
                 href={link.href}
+                onClick={(e) => handleNavClick(e, link.href)}
                 className="text-lg font-medium text-[#111111] dark:text-[#e8e8e8] hover:text-[#008f5a] dark:hover:text-[#00ff9f] transition-colors duration-200"
               >
                 {link.label}
@@ -70,9 +81,9 @@ const Navbar = ({ isDark, toggleTheme }) => {
           <button
             onClick={toggleTheme}
             className="px-4 py-2 text-black dark:text-[#00ff9f] font-mono text-sm rounded hover:bg-[#008f5a] dark:hover:bg-[#00ff9f] hover:text-white dark:hover:text-black transition-all duration-200"
-            aria-label="Toggle dark and light mode"
+            aria-label="Switch portfolio theme"
           >
-            {isDark ? "[ light ]" : "[ dark ]"}
+            {getToggleLabel()}
           </button>
 
           {/* Mobile Menu Button */}
@@ -104,7 +115,10 @@ const Navbar = ({ isDark, toggleTheme }) => {
                 
                 <a 
                   href={link.href}
-                  onClick={() => setMenuOpen(false)}
+                  onClick={(e) => {
+                    handleNavClick(e, link.href)
+                    setMenuOpen(false)
+                  }}
                   className="text-sm font-medium text-[#111111] dark:text-[#e8e8e8] hover:text-[#008f5a] dark:hover:text-[#00ff9f] transition-colors duration-200"
                 >
                   {link.label}

@@ -5,8 +5,13 @@ import Projects from "../components/sections/Projects"
 import Experience from "../components/sections/Experience"
 import Contact from "../components/sections/Contact"
 import SectionDivider from "../components/ui/Sectiondivider"
+import UBHome from "../universeB/sections/ubHome"
 
-const HomeContainer = () => {
+const HomeContainer = ({ isUniverseB, toggleTheme }) => {
+    if (isUniverseB) {
+        return <UBHome toggleTheme={toggleTheme} />
+    }
+
     return (
         <main>
             <Hero />
