@@ -1,5 +1,9 @@
 import { label } from "framer-motion/client"
 
+const HBP_IMG = new URL("../assets/HBP.jpg", import.meta.url).href
+const DISPATCH_IMG = new URL("../assets/Dispatch.JPG", import.meta.url).href
+const FMS_IMG = new URL("../assets/FMS.JPG", import.meta.url).href
+
 export const PERSONAL = {
     name: "Shanmukh Pudi",
     title: "Full-Stack Developer & Automation Engineer",
@@ -133,7 +137,7 @@ export const PROJECTS = [
     demo: "https://shanmukhpudi.github.io/glowing-adventure/",
     status: "live",
     featured: true,
-    image: "/src/assets/HBP.jpg",
+    image: HBP_IMG,
   },
   {
     id: 2,
@@ -144,7 +148,7 @@ export const PROJECTS = [
     demo: null,
     status: "In-development",
     featured: false,
-    image: "/src/assets/Dispatch.JPG",
+    image: DISPATCH_IMG,
   },
   {
     id: 3,
@@ -155,7 +159,7 @@ export const PROJECTS = [
     demo: null,
     status: "In-development",
     featured: false,
-    image: "/src/assets/FMS.JPG",
+    image: FMS_IMG,
   },
 ]
 

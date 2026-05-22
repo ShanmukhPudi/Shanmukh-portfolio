@@ -41,8 +41,22 @@ const ProjectCard = ({ project, index }) => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          position: "relative",
         }}
       >
+        {project.image && (
+          <img
+            src={project.image}
+            alt={`${project.title} screenshot`}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              position: "absolute",
+              inset: 0,
+            }}
+          />
+        )}
         <span
           style={{
             position: "absolute",
