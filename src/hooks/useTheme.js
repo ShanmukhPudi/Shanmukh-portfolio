@@ -1,24 +1,36 @@
-import { useState, useEffect } from "react"
+import { useState, useCallback, useLayoutEffect } from 'react'
+
+const applyTheme = (themeValue) => {
+    const root = document.documentElement
+    root.classList.remove("dark", "universe-b")
+
+    if (themeValue === "dark") {
+        root.classList.add("dark")
+    } else if (themeValue === "universeB") {
+        root.classList.add("universe-b")
+    }
+
+    localStorage.setItem('theme', themeValue)
+}
 
 export const useTheme = () => {
-    const [isDark, setIsDark] = useState(() => {
-        const saved = localStorage.getItem("theme")
-        if(saved) return saved === "dark"
-        return window.matchMedia("(prefers-color-scheme: dark)").matches
+    const [theme, setTheme] = useState(() => {
+        const savedTheme = localStorage.getItem('theme')
+        if (savedTheme === "dark" || savedTheme === "universeB") return savedTheme
+        return "dark"
     })
 
-    useEffect(() => {
-        const root = document.documentElement
-        if (isDark) {
-            root.classList.add("dark")
-            localStorage.setItem("theme", "dark")
-        }else {
-            root.classList.remove("dark")
-            localStorage.setItem("theme", "light")
-        }
-    }, [isDark])
+    // Apply theme synchronously before paint whenever theme changes
+    useLayoutEffect(() => {
+        applyTheme(theme)
+    }, [theme])
 
-    const toggleTheme = () => setIsDark(prev => !prev)
+    const toggleTheme = useCallback(() => {
+        setTheme(prev => prev === "dark" ? "universeB" : "dark")
+    }, [])
 
-    return { isDark, toggleTheme}
+    const isDark = theme === "dark"
+    const isUniverseB = theme === "universeB"
+
+    return { theme, toggleTheme, isDark, isUniverseB }
 }

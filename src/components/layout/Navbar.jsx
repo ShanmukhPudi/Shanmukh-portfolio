@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react"
 import { Menu, X } from "lucide-react"
-import { href } from "react-router-dom"
 
 const NAV_LINKS = [
   { label: "About", href: "#about" },
@@ -10,14 +9,12 @@ const NAV_LINKS = [
   { label: "Contact", href: "#contact" },
 ]
 
-const Navbar = ({ isDark, toggleTheme }) => {
+const Navbar = ({ isDark, isUniverseB,toggleTheme }) => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
-    }
+    const handleScroll = () => setIsScrolled(window.scrollY > 20)
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
@@ -25,9 +22,12 @@ const Navbar = ({ isDark, toggleTheme }) => {
   const handleNavClick = (e, href) => {
     e.preventDefault()
     const target = document.querySelector(href)
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth" })
-    }
+    if (target) target.scrollIntoView({ behavior: "smooth" })
+  }
+
+  const getToggleLabel = () => {
+    if (isDark) return "[ Change Realm ]"
+    return "[ dark ]"
   }
 
   return (
@@ -81,9 +81,9 @@ const Navbar = ({ isDark, toggleTheme }) => {
           <button
             onClick={toggleTheme}
             className="px-4 py-2 text-black dark:text-[#00ff9f] font-mono text-sm rounded hover:bg-[#008f5a] dark:hover:bg-[#00ff9f] hover:text-white dark:hover:text-black transition-all duration-200"
-            aria-label="Toggle dark and light mode"
+            aria-label="Switch portfolio theme"
           >
-            {isDark ? "[ light ]" : "[ dark ]"}
+            {getToggleLabel()}
           </button>
 
           {/* Mobile Menu Button */}
@@ -115,7 +115,7 @@ const Navbar = ({ isDark, toggleTheme }) => {
                 
                 <a 
                   href={link.href}
-                  onClick={() => {
+                  onClick={(e) => {
                     handleNavClick(e, link.href)
                     setMenuOpen(false)
                   }}

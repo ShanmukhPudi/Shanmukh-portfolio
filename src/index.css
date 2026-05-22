@@ -62,3 +62,52 @@ body {
   .px-12 { padding-left: 3rem; padding-right: 3rem; }
   .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
 }
+
+
+/* ============================================================
+   UNIVERSE B — Design Tokens
+   ============================================================ */
+
+.universe-b {
+  /* Core palette */
+  --ub-bg:          #EEE5DA;   /* Light Almond — page background */
+  --ub-bg-surface:  #E6DDD1;   /* slightly deeper for cards/surfaces */
+  --ub-fg:          #262424;   /* Deep Charcoal — primary text */
+  --ub-fg-muted:    #5A5755;   /* secondary text */
+  --ub-fg-faint:    #9A9694;   /* placeholder / metadata */
+
+  /* Accent */
+  --ub-accent:      #0F9E99;   /* Tropical Teal — primary accent */
+  --ub-accent-dark: #0B7A76;   /* Teal hover / pressed state */
+  --ub-accent-2:    #A0430A;   /* Burnt Copper — used very sparingly */
+
+  /* Borders & lines */
+  --ub-border:      #C8BFB4;   /* standard border */
+  --ub-border-strong: #262424; /* strong geometric lines */
+
+  /* Typography */
+  --ub-font-heading: 'Space Grotesk', 'Inter', sans-serif;
+  --ub-font-body:    'Inter', sans-serif;
+
+  /* Motion durations — mirrors the blueprint timing grid */
+  --ub-dur-micro:   0.2s;
+  --ub-dur-short:   0.65s;
+  --ub-dur-medium:  0.9s;
+  --ub-dur-long:    1.2s;
+  --ub-dur-xl:      1.4s;
+
+  /* Spacing */
+  --ub-section-pad: 160px;
+  --ub-block-gap:   80px;
+}
+
+/* Universe B resets the scrollbar to match its aesthetic */
+.universe-b ::-webkit-scrollbar {
+  width: 2px;
+}
+.universe-b ::-webkit-scrollbar-track {
+  background: var(--ub-bg);
+}
+.universe-b ::-webkit-scrollbar-thumb {
+  background: var(--ub-accent);
+}
