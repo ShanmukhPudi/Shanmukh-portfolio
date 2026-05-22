@@ -133,7 +133,7 @@ export const PROJECTS = [
     demo: "https://shanmukhpudi.github.io/glowing-adventure/",
     status: "live",
     featured: true,
-    image: null,
+    image: "/src/assets/HBP.jpg",
   },
   {
     id: 2,
@@ -144,7 +144,7 @@ export const PROJECTS = [
     demo: null,
     status: "In-development",
     featured: false,
-    image: null,
+    image: "/src/assets/Dispatch.JPG",
   },
   {
     id: 3,
@@ -155,7 +155,7 @@ export const PROJECTS = [
     demo: null,
     status: "In-development",
     featured: false,
-    image: null,
+    image: "/src/assets/FMS.JPG",
   },
 ]
 
