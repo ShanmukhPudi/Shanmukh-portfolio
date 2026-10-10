@@ -63,6 +63,23 @@ body {
   .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
 
 /* ============================================================
    UNIVERSE B — Design Tokens

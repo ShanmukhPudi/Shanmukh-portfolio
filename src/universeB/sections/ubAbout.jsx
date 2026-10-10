@@ -56,10 +56,12 @@ const UBAbout = () => {
           gridTemplateColumns: "1fr 1fr",
           gap: "clamp(40px, 6vw, 100px)",
           alignItems: "start",
+          width: "100%",
+          overflow: "hidden",
         }}
         className="ub-about-grid"
       >
-        <div>
+        <div style={{ minWidth: 0  }}>
           {ABOUT.bio.map((paragraph, i) => (
             <motion.p
               key={i}
@@ -119,7 +121,14 @@ const UBAbout = () => {
           </motion.div>
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
+        <div 
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "0",
+            minWidth: 0,
+          }}
+        >
           {ABOUT.strengths.map((strength, i) => (
             <motion.div
               key={i}
@@ -185,8 +194,30 @@ const UBAbout = () => {
       </div>
 
       <style>{`
+        @media (max-width: 1024px) {
+          .ub-about-grid { 
+            grid-template-columns: 1fr !important; 
+            gap: clamp(24px, 4vw, 60px) !important;
+          }
+        }
+
         @media (max-width: 768px) {
-          .ub-about-grid { grid-template-columns: 1fr !important; }
+          .ub-about-grid { 
+            grid-template-columns: 1fr !important; 
+          }
+          section#about {
+            overflow-x: hidden;
+          }
+        }
+
+        @media (max-width: 480px) {
+          section#about {
+            padding: clamp(60px, 8vw, 100px) clamp(12px, 3vw, 20px) !important;
+            overflow-x: hidden;
+          }
+          .ub-about-grid {
+            gap: clamp(20px, 3vw, 40px) !important;
+          }
         }
       `}</style>
     </section>

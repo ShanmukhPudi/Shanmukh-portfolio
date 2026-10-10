@@ -49,12 +49,14 @@ const UBNavbar = ({ toggleTheme }) => {
                     style={{
                         maxWidth: "1400px",
                         margin: "0 auto",
-                        padding: "0 48px",
+                        padding: "0 clamp(16px, 4vw, 48px)",
                         height: "72px",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "space-between",
+                        gap: "clamp(8px, 2vw, 16px)",
                     }}
+                    className="ub-nav-main"
                 >
                     {/* Logo = bold, geometric, uppercase */}
                     <a
@@ -64,12 +66,14 @@ const UBNavbar = ({ toggleTheme }) => {
                         style={{
                             fontFamily: "var(--ub-font-heading, 'Space Grotesk', sans-serif)",
                             fontWeight: 700,
-                            fontSize: "1.1rem",
+                            fontSize: "clamp(0.9rem, 2.5vw, 1.1rem)",
                             letterSpacing: "0.18em",
                             textTransform: "uppercase",
                             color: "var(--ub-fg, #262424)",
                             textDecoration: "none",
                             transition: "color 0.2s",
+                            whiteSpace: "nowrap",
+                            flexShrink: 0,
                         }}
                         onMouseEnter={e => e.target.style.color = "#0F9E99"}
                         onMouseLeave={e => e.target.style.color = "var(--ub-fg, #262424)"}
@@ -116,7 +120,7 @@ const UBNavbar = ({ toggleTheme }) => {
                     </ul>
 
                     {/* Right side */}
-                    <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: "clamp(12px, 2vw, 20px)", marginLeft: "auto", flexShrink: 0 }} className="ub-nav-right">
 
                         {/* Change realm - sharp rect button, teal border */}
                         <button
@@ -125,17 +129,20 @@ const UBNavbar = ({ toggleTheme }) => {
                             style={{
                                 fontFamily: "var(--ub-fg-heading, 'Space Grotesk', sans-serif)",
                                 fontWeight: 600,
-                                fontSize: "0.7rem",
+                                fontSize: "clamp(0.6rem, 1.8vw, 0.7rem)",
                                 letterSpacing: "0.16em",
                                 textTransform: "uppercase",
                                 color: "var(--ub-accent, #0F9E99)",
                                 background: "transparent",
                                 border: "0.5px solid var(--ub-accent, #0F9E99)",
-                                padding: "8px 16px",
+                                padding: "clamp(6px, 1vw, 8px) clamp(10px, 2vw, 16px)",
                                 borderRadius: 0,
                                 cursor: "pointer",
                                 transition: "background 0.2s, color 0.2s",
+                                whiteSpace: "nowrap",
+                                flexShrink: 0,
                             }}
+                            className="ub-theme-btn"
                             onMouseEnter={e => {
                                 e.currentTarget.style.background = "#0F9E99"
                                 e.currentTarget.style.color = "#EEE5DA"
@@ -158,33 +165,34 @@ const UBNavbar = ({ toggleTheme }) => {
                                 background: "none",
                                 border: "none",
                                 cursor: "pointer",
-                                padding: "4px",
+                                padding: "clamp(2px, 1vw, 4px)",
+                                flexShrink: 0,
                             }}
                             className="ub-hamburger"
                         >
                             <span style={{
                                 display: "block",
-                                width: "22px",
+                                width: "clamp(18px, 4vw, 22px)",
                                 height: "1.5px",
-                                background: "#262424",
-                                marginBottom: "6px",
-                                transition: menuOpen ? "rotate(45deg) translate(5px, 5px)" : "none",
+                                background: "var(--ub-fg, #262424)",
+                                marginBottom: "clamp(4px, 1vw, 6px)",
+                                transition: menuOpen ? "rotate(45deg) translate(5px, 5px) 0.3s" : "none 0.3s",
                             }} />
                             <span style={{
                                 display: "block",
-                                width: "22px",
+                                width: "clamp(18px, 4vw, 22px)",
                                 height: "1.5px",
-                                background: "#262424",
-                                transition: "opacity 0.2s",
+                                background: "var(--ub-fg, #262424)",
+                                transition: "opacity 0.3s",
                                 opacity: menuOpen ? 0 : 1,
                             }}/>
                             <span style={{
                                 display: "block",
-                                width: "22px",
+                                width: "clamp(18px, 4vw, 22px)",
                                 height: "1.5px",
-                                background: "#262424",
-                                marginTop: "6px",
-                                transition: "transform 0.2s",
+                                background: "var(--ub-fg, #262424)",
+                                marginTop: "clamp(4px, 1vw, 6px)",
+                                transition: "transform 0.3s",
                                 transform: menuOpen ? "rotate(-45deg) translate(5px, -5px)" : "none",
                             }}/>
                         </button>
@@ -206,10 +214,11 @@ const UBNavbar = ({ toggleTheme }) => {
                             left: 0,
                             right: 0,
                             zIndex: 49,
-                            background: "#EEE5DA",
+                            background: "var(--ub-bg, #EEE5DA)",
                             borderBottom: "1px solid #C8BFB4",
-                            padding: "32px 48px 40px",
+                            padding: "clamp(20px, 5vw, 32px) clamp(16px, 4vw, 48px) clamp(24px, 5vw, 40px)",
                         }}
+                        className="ub-mobile-menu"
                     >
                         <ul role="list" style={{ listStyle: "none", margin: 0, padding: 0 }}>
                             {NAV_LINKS.map((link, i) => (
@@ -220,7 +229,7 @@ const UBNavbar = ({ toggleTheme }) => {
                                     transition={{ delay: i * 0.06, duration: 0.3 }}
                                     style={{
                                         borderBottom: "1px solid #C8BFB4",
-                                        padding: "16px 0",
+                                        padding: "clamp(12px, 2vw, 16px) 0",
                                     }}
                                 >
                                     <a
@@ -229,9 +238,9 @@ const UBNavbar = ({ toggleTheme }) => {
                                         style={{
                                             fontFamily: "var(--ub-font-heading, 'Space Grotesk', sans-serif)",
                                             fontWeight: 700,
-                                            fontSize: "1.4rem",
+                                            fontSize: "clamp(1.1rem, 4vw, 1.4rem)",
                                             letterSpacing: "0.04em",
-                                            color: "#262424",
+                                            color: "var(--ub-fg, #262424)",
                                             textDecoration: "none",
                                         }}
                                     >
@@ -246,9 +255,41 @@ const UBNavbar = ({ toggleTheme }) => {
  
             {/* Responsive overrides */}
             <style>{`
+                @media (max-width: 1024px) {
+                  .ub-nav-desktop { 
+                    display: none !important;
+                  }
+                  .ub-hamburger { 
+                    display: block !important;
+                  }
+                }
+
                 @media (max-width: 768px) {
-                .ub-nav-desktop { display: none !important; }
-                .ub-hamburger { display: block !important; }
+                  .ub-nav-desktop { 
+                    display: none !important;
+                  }
+                  .ub-hamburger { 
+                    display: block !important;
+                  }
+                  .ub-nav-main {
+                    flex-wrap: wrap;
+                  }
+                }
+
+                @media (max-width: 480px) {
+                  .ub-nav-main {
+                    height: auto;
+                    min-height: 60px;
+                    padding: 12px clamp(12px, 3vw, 16px) !important;
+                  }
+                  .ub-theme-btn {
+                    padding: 6px clamp(8px, 1vw, 10px) !important;
+                    font-size: 0.6rem !important;
+                    letter-spacing: 0.12em !important;
+                  }
+                  .ub-mobile-menu {
+                    padding: clamp(16px, 3vw, 20px) clamp(12px, 3vw, 16px) clamp(20px, 4vw, 24px) !important;
+                  }
                 }
             `}</style>
         </>

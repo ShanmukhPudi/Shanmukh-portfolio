@@ -48,9 +48,10 @@ const Hero = () => {
         <section 
             id="hero"
             aria-label="Hero section"
-            className="relative min-h-screen flex items-center justify-center w-full px-6 md:px-20"
+            className="relative min-h-screen flex items-center justify-center w-full px-6 md:px-20 overflow-x-hidden"
+            style={{ boxSizing: "border-box" }}
         >
-            <div className="w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-20 py-32">
+            <div className="w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12 md:gap-20 py-16 md:py-32 px-0">
                 <motion.div 
                     variants={containerVariants}
                     initial="hidden"
@@ -58,9 +59,8 @@ const Hero = () => {
                     className="flex flex-col flex-1 max-w-4xl min-h-[300px] py-10"
                 >
                 
-                {/* terminal greeting line */}
-                <motion.div variants={itemVariants} className="mb-6">
-                    <span className="font-mono text-sm text-[#008f5a] dark:text-[#00ff9f] tracking-widest uppercase">
+                <motion.div variants={itemVariants} className="mb-4 md:mb-6">
+                    <span className="font-mono text-xs md:text-sm text-[#008f5a] dark:text-[#00ff9f] tracking-widest uppercase">
                         {">_ hello world"}
                     </span>
                 </motion.div>
@@ -68,7 +68,7 @@ const Hero = () => {
                 {/* Name */}
                 <motion.h1 
                     variants={itemVariants}
-                    className="text-4xl md:text-6xl font-bold text-[#111111] dark:text-[#e8e8e8] leading-none tracking-tight mt-4"
+                    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#111111] dark:text-[#e8e8e8] leading-none tracking-tight mt-2 md:mt-4"
                 >
                     {PERSONAL.name}
                 </motion.h1>
@@ -79,7 +79,7 @@ const Hero = () => {
                 </h2> */}
                 <motion.h2 
                     variants={itemVariants} 
-                    className="text-2xl md:text-3xl font-semibold text-[#008f5a] dark:text-[#00ff9f] font-mono mb-6 h-10 flex items-center gap-1"
+                    className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-[#008f5a] dark:text-[#00ff9f] font-mono mb-4 md:mb-6 h-8 md:h-10 flex items-center gap-1"
                 >
                     {typedText}
                     <span 
@@ -91,7 +91,7 @@ const Hero = () => {
                 {/* tagline */}
                 <motion.p 
                     variants={itemVariants} 
-                    className="text-lg md:text-xl text-[#777777] dark:text-[#6b6b6b] max-w-2xl leading-relaxed mt-4"
+                    className="text-base sm:text-lg md:text-xl text-[#777777] dark:text-[#6b6b6b] max-w-2xl leading-relaxed mt-2 md:mt-4"
                 >
                     {PERSONAL.tagline}
                 </motion.p>
@@ -99,14 +99,14 @@ const Hero = () => {
                 {/* CTA buttons */}
                 <motion.div 
                     variants={itemVariants} 
-                    className="flex flex-wrap items-center gap-12 mb-8"
-                    style={{ marginTop: '2rem' }}
+                    className="flex flex-col sm:flex-row flex-wrap items-center gap-6 sm:gap-8 md:gap-12 mb-6 md:mb-8 w-full sm:w-auto"
+                    style={{ marginTop: '1.5rem' }}
                 >
                     <Button 
                         href="#projects"
                         variant="outline"
                         aria-label="View my projects"
-                        style={{ padding: "1rem 2.5rem", fontSize: "1.1rem"}}
+                        style={{ padding: "clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2.5rem)", fontSize: "clamp(0.9rem, 2vw, 1.1rem)" }}
                     >
                         View Projects ↗
                     </Button>
@@ -114,7 +114,7 @@ const Hero = () => {
                         href="#contact"
                         variant="outline"
                         aria-label="Contact Shanmukh"
-                        style={{ padding: "1rem 2.5rem", fontSize: "1.1rem" }}
+                        style={{ padding: "clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2.5rem)", fontSize: "clamp(0.9rem, 2vw, 1.1rem)" }}
                     >
                         Contact Me ↗
                     </Button>
@@ -135,7 +135,7 @@ const Hero = () => {
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00ff9f] opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#008f5a] dark:bg-[#00ff9f]"></span>
                         </span>
-                        <span className="text-sm font-mono text-[#777777] dark:text-[#6b6b6b]">
+                        <span className="text-xs sm:text-sm font-mono text-[#777777] dark:text-[#6b6b6b]">
                             Available for work
                         </span>
                     </motion.div>
@@ -148,7 +148,7 @@ const Hero = () => {
                 variants={fadeVariants}
                 initial="hidden"
                 animate="visible"
-                className="relative w-80 md:w-[420px] flex-shrink-0"
+                className="relative w-64 sm:w-72 md:w-80 lg:w-[420px] flex-shrink-0"
             >
                 {/* glow effect behind photo */}
                 <div 
@@ -170,10 +170,10 @@ const Hero = () => {
                 variants={itemVariants} 
                 initial="hidden"
                 animate="visible"
-                className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[#777777] dark:text-[#6b6b6b]"
+                className="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[#777777] dark:text-[#6b6b6b]"
             >
                 <span className="text-xs font-mono tracking-widest uppercase">scroll</span>
-                <div className="w-px h-12 bg-gradient-to-b from-[#008f5a] dark:from-[#00ff9f] to-transparent"></div>
+                <div className="w-px h-8 sm:h-12 bg-gradient-to-b from-[#008f5a] dark:from-[#00ff9f] to-transparent"></div>
             </motion.div>
         </section>
     )
