@@ -1,75 +1,62 @@
-import { useEffect, useState, useRef } from "react";
-import { motion, AnimatePresence, MotionConfig } from "framer-motion";
-import { SpeedInsights } from "@vercel/speed-insights/react";
-import { useTheme } from "./hooks/useTheme";
-import Navbar from "./components/layout/Navbar";
-import Footer from "./components/layout/Footer";
-import HomeContainer from "./containers/HomeContainer";
-import BackToTop from "./components/ui/BackToTop";
-import ScrollProgress from "./components/ui/ScrollProcress";
-// import BootOverlay from "./components/ui/BootOverlay";
-// import useStartupAnimation from "./hooks/useStartupAnimation";
+import { lazy, Suspense, useEffect, useRef, useState } from "react"
+import { motion, AnimatePresence, MotionConfig } from "framer-motion"
+import { SpeedInsights } from "@vercel/speed-insights/react"
+import { useAppTheme } from "./hooks/useAppTheme"
+import EmberApp from "./themes/ember/EmberApp"
+
+// The classic Matrix theme is archived in src/themes/classic and only loads when its realm is selected
+const ClassicApp = lazy(() => import("./themes/classic/ClassicApp"))
+
+const FLASH_COLORS = { classic: "#0a0a0a", emberDark: "#0B0D12", emberLight: "#F1F2F4" }
 
 function App() {
-  const { isDark, isUniverseB, toggleTheme } = useTheme();
-  const [transitioning, setTransitioning] = useState(false);
-  const prevIsUniverseB = useRef(isUniverseB);
+  const { realm, mode, toggleRealm, toggleMode } = useAppTheme()
+  const [flash, setFlash] = useState(null)
+  const timers = useRef([])
 
-  // Scroll to top when theme changes
   useEffect(() => {
-    window.scrollTo(0, 0);
-    prevIsUniverseB.current = isUniverseB;
-  }, [isUniverseB]);
+    window.scrollTo(0, 0)
+  }, [realm])
 
-  const handleToggleTheme = () => {
-    setTransitioning(true);
-    setTimeout(() => {
-      toggleTheme();
-      setTimeout(() => setTransitioning(false), 400);
-    }, 300);
-  };
+  useEffect(() => () => timers.current.forEach(clearTimeout), [])
+
+  const switchRealm = () => {
+    // colour the flash with the realm we are heading to
+    const target = realm === "ember" ? FLASH_COLORS.classic : mode === "dark" ? FLASH_COLORS.emberDark : FLASH_COLORS.emberLight
+    setFlash(target)
+    timers.current.push(
+      setTimeout(() => {
+        toggleRealm()
+        timers.current.push(setTimeout(() => setFlash(null), 400))
+      }, 300)
+    )
+  }
 
   return (
     <MotionConfig reducedMotion="user">
       <SpeedInsights />
-      <div
-        className={
-          isUniverseB
-            ? "min-h-screen"
-            : "bg-[#f9f9f9] dark:bg-[#0a0a0a] min-h-screen transition-colors duration-500"
-        }
-      >
-        {/* Realm transition flash */}
-        <AnimatePresence>
-          {transitioning && (
-            <motion.div
-              key="realm-flash"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              style={{
-                position: "fixed",
-                inset: 0,
-                background: "#262424",
-                zIndex: 9999,
-                pointerEvents: "none",
-              }}
-            />
-          )}
-        </AnimatePresence>
+      <AnimatePresence>
+        {flash && (
+          <motion.div
+            key="realm-flash"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            style={{ position: "fixed", inset: 0, background: flash, zIndex: 9999, pointerEvents: "none" }}
+          />
+        )}
+      </AnimatePresence>
 
-        {/* <BootOverlay phase={phase} /> */}
-        <motion.div initial={{ opacity: 1 }} animate={{ opacity: 1 }} transition={{ duration: 0 }}>
-          {!isUniverseB && <Navbar isDark={isDark} toggleTheme={handleToggleTheme} />}
-          <HomeContainer isUniverseB={isUniverseB} toggleTheme={handleToggleTheme} />
-          {!isUniverseB && <Footer />}
-        </motion.div>
-        {!isUniverseB && <BackToTop />}
-        {!isUniverseB && <ScrollProgress />}
-      </div>
+      {realm === "ember" ? (
+        <EmberApp mode={mode} onToggleMode={toggleMode} onSwitchRealm={switchRealm} />
+      ) : (
+        <Suspense fallback={<div style={{ minHeight: "100vh", background: "#0a0a0a" }} />}>
+          <ClassicApp onSwitchRealm={switchRealm} />
+        </Suspense>
+      )}
     </MotionConfig>
-  );
+  )
 }
 
-export default App;
+export default App

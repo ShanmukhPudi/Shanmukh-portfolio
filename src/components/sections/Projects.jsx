@@ -60,8 +60,9 @@ const FeaturedProject = ({ project }) => {
                 border: "1px solid",
                 overflow: "hidden",
                 position: "relative",
+                boxSizing: "border-box",
             }}
-            className="border-[#e4e4e4] dark:border-[#1f1f1f] bg-white dark:bg-[#111111] group"
+            className="border-[#e4e4e4] dark:border-[#1f1f1f] bg-white dark:bg-[#111111] group w-full min-w-0"
         >
             
             {/*gradient top border*/}
@@ -88,8 +89,8 @@ const FeaturedProject = ({ project }) => {
 
             {/* img placeholder */}
             <div 
-            style={{ height: "260px" }}
-            className="w-full bg-[#f4f4f4] dark-bg-[#0d0d0d] flex items-center justify-center border-b border-[#e4e4e4] dark:border-[#1f1f1f]">
+              style={{ aspectRatio: "16/7", position: "relative" }}
+              className="w-full bg-[#f4f4f4] dark-bg-[#0d0d0d] flex items-center justify-center border-b border-[#e4e4e4] dark:border-[#1f1f1f]">
                 {project.image ? (
                     <img 
                         src={project.image}
@@ -97,26 +98,26 @@ const FeaturedProject = ({ project }) => {
                         className="w-full h-full object-cover"
                     />
                 ) : (
-                    <span className="font-mono text-sm text-[#777777] dark:text-[#6b6b6b]">
+                    <span className="font-mono text-xs sm:text-sm text-[#777777] dark:text-[#6b6b6b]">
                         {">_ screenshot coming soon"}
                     </span>
                 )}
             </div>
 
             {/* content */}
-            <div style={{ padding: "2.5rem" }}>
+            <div style={{ padding: "clamp(1.5rem, 3vw, 2.5rem)", boxSizing: "border-box" }}>
                 <div 
-                    style={{ marginBottom: "1rem" }}
-                    className="flex items-start justify-between gap-4"
+                    style={{ marginBottom: "clamp(0.75rem, 2vw, 1rem)" }}
+                    className="flex flex-col gap-2 w-full min-w-0"
                 >
                     <h3 
-                        style={{ fontSize: "1.5rem", fontWeight: "700" }}
-                        className="text-[#111111] dark:text-[#e8e8e8] group-hover:text-[#008f5a] dark:group-hover:text-[#00ff9f] transition-colors duration-200"
+                        style={{ fontSize: "clamp(1rem, 2.5vw, 1.25rem)", fontWeight: "700", lineHeight: "1.3" }}
+                        className="text-[#111111] dark:text-[#e8e8e8] group-hover:text-[#008f5a] dark:group-hover:text-[#00ff9f] transition-colors duration-200 w-full min-w-0"
                     >
                         {project.title}
                     </h3>
                     <span 
-                        style={{ fontSize: "0.75rem", fontWeight: "500", whiteSpace: "nowrap" }}
+                        style={{ fontSize: "clamp(0.65rem, 1.5vw, 0.75rem)", fontWeight: "500", flexShrink: 0 }}
                         className={`font-mono ${statusStyles[project.status]}`}
                     >
                         {statusLabels[project.status]}
@@ -124,15 +125,15 @@ const FeaturedProject = ({ project }) => {
                 </div>
 
                 <p 
-                    style={{ marginBottom: "1.5rem", lineHeight: "1.7"}}
-                    className="text-[#555555] dark:text-[#a0a0a0]"
+                    style={{ marginBottom: "clamp(1rem, 2vw, 1.5rem)", lineHeight: "1.7" }}
+                    className="text-[#555555] dark:text-[#a0a0a0] w-full"
                 >
                     {project.description}
                 </p>
 
                 {/*tags*/}
                 <div 
-                    style={{ display: "flex", flexWrap: "wrap", gap: "0.625rem", marginBottom: "2rem" }}
+                    style={{ display: "flex", flexWrap: "wrap", gap: "clamp(0.4rem, 1vw, 0.625rem)", marginBottom: "2rem" }}
                 >
                     {project.tags.map((tag) => (
                         <Tag key={tag} label={tag} iconMap={fullIconMap} />
@@ -140,7 +141,7 @@ const FeaturedProject = ({ project }) => {
                 </div>
 
                 {/*Buttons*/}
-                <div style={{ display: "flex", gap: "1rem" }}>
+                <div className="w-full project-buttons" style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
                     {project.demo && (
 
                         <a 
@@ -148,8 +149,8 @@ const FeaturedProject = ({ project }) => {
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label={`View live demo of ${project.title}`}
-                            style={{ padding: "0.75rem 2rem", fontSize: "0.875", borderRadius: "0.5rem" }}
-                            className="font-mono bg-[#008f5a] dark:bg-[#00ff9f] text-white dark:text-black hover:opacity-80 transition-all duration-200"
+                            style={{ padding: "clamp(0.6rem, 1.5vw, 0.75rem) clamp(1.25rem, 2.5vw, 2rem)", fontSize: "clamp(0.7rem, 1.5vw, 0.875rem)", borderRadius: "0.5rem" }}
+                            className="font-mono bg-[#008f5a] dark:bg-[#00ff9f] text-white dark:text-black hover:opacity-80 transition-all duration-200 flex-shrink-0 text-center"
                         >
                             Live Demo ↗
                         </a>
@@ -162,8 +163,8 @@ const FeaturedProject = ({ project }) => {
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label={`View GitHub repository of ${project.title}`}
-                            style={{ padding: "0.75rem 2rem", fontSize: "0.875rem", borderRadius: "0.5rem", border: "1px solid"}}
-                            className="font-mono border-[#008f5a] dark:border-[#00ff9f] text-[#008f5a] dark:text-[#00ff9f] hover:bg-[#008f5a] dark:hover:bg-[#00ff9f] hover:text-white dark:hover:text-black transition-all duration-200"
+                            style={{ padding: "clamp(0.6rem, 1.5vw, 0.75rem) clamp(1.25rem, 2.5vw, 2rem)", fontSize: "clamp(0.7rem, 1.5vw, 0.875rem)", borderRadius: "0.5rem", border: "1px solid" }}
+                            className="font-mono border-[#008f5a] dark:border-[#00ff9f] text-[#008f5a] dark:text-[#00ff9f] hover:bg-[#008f5a] dark:hover:bg-[#00ff9f] hover:text-white dark:hover:text-black transition-all duration-200 flex-shrink-0 text-center"
                         >
                             GitHub ↗
                         </a>
@@ -187,13 +188,14 @@ const ProjectCard = ({ project }) => {
                 borderRadius: "1.25rem",
                 border: "1px solid",
                 overflow: "hidden",
+                boxSizing: "border-box",
             }}
-            className="border-[#e4e4e4] dark:border-[#1f1f1f] bg-white dark:bg-[#111111] group flex flex-col"
+            className="border-[#e4e4e4] dark:border-[#1f1f1f] bg-white dark:bg-[#111111] group flex flex-col w-full min-w-0"
         >
             {/*image placeholder*/}
             <div 
-                style={{ height: "160px" }}
-                className="w-full bg-[#f4f4f4] dark:bg-[#0d0d0d] flex items-center justify-center border-b border-[#e4e4e4] dark:border-[#1f1f1f]"
+              style={{ aspectRatio: "4/3", position: "relative" }}
+              className="w-full bg-[#f4f4f4] dark:bg-[#0d0d0d] flex items-center justify-center border-b border-[#e4e4e4] dark:border-[#1f1f1f]"
             >
                 {project.image ? (
                     <img 
@@ -209,19 +211,19 @@ const ProjectCard = ({ project }) => {
             </div>
 
             {/* Content */}
-            <div style={{ padding: "2rem" }} className="flex flex-col flex-1">
+            <div style={{ padding: "clamp(1.5rem, 3vw, 2rem)", boxSizing: "border-box" }} className="flex flex-col flex-1 w-full">
                 <div
-                    style={{ marginBottom: "0.75rem" }}
-                    className="flex items-start justify-between gap-4"
+                    style={{ marginBottom: "clamp(0.5rem, 1.5vw, 0.75rem)" }}
+                    className="flex flex-col gap-2 w-full min-w-0"
                 >
                     <h3
-                        style={{ fontSize: "1.125rem", fontWeight: "700" }}
-                        className="text-[#111111] dark:text-[#e8e8e8] group-hover:text-[#008f5a] dark:group-hover:text-[#00ff9f] transition-colors duration-200"
+                        style={{ fontSize: "clamp(1rem, 2.5vw, 1.125rem)", fontWeight: "700", lineHeight: "1.3" }}
+                        className="text-[#111111] dark:text-[#e8e8e8] group-hover:text-[#008f5a] dark:group-hover:text-[#00ff9f] transition-colors duration-200 w-full min-w-0"
                     >
                         {project.title}
                     </h3>
                     <span
-                        style={{ fontSize: "0.75rem", fontWeight: "500", whiteSpace: "nowrap" }}
+                        style={{ fontSize: "clamp(0.65rem, 1.5vw, 0.75rem)", fontWeight: "500", flexShrink: 0 }}
                         className={`font-mono ${statusStyles[project.status]}`}
                     >
                         {statusLabels[project.status]}
@@ -229,15 +231,15 @@ const ProjectCard = ({ project }) => {
                 </div>
 
                 <p
-                    style={{ fontSize: "0.875rem", lineHeight: "1.7", marginBottom: "1.25rem" }}
-                    className="text-[#555555] dark:text-[#a0a0a0] flex-1"
+                    style={{ fontSize: "clamp(0.8rem, 1.5vw, 0.875rem)", lineHeight: "1.7", marginBottom: "clamp(1rem, 2vw, 1.25rem)" }}
+                    className="text-[#555555] dark:text-[#a0a0a0] flex-1 w-full"
                 >
                     {project.description}
                 </p>
 
                 {/* Tags */}
                 <div
-                    style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", marginBottom: "1.5rem" }}
+                    style={{ display: "flex", flexWrap: "wrap", gap: "clamp(0.35rem, 1vw, 0.5rem)", marginBottom: "clamp(1rem, 2vw, 1.5rem)" }}
                 >
                     {project.tags.map((tag) => (
                         <Tag key={tag} label={tag} iconMap={fullIconMap}/>
@@ -245,7 +247,7 @@ const ProjectCard = ({ project }) => {
                 </div>
 
                 {/* Buttons */}
-                <div style={{ display: "flex", gap: "0.75rem" }}>
+                <div className="w-full project-buttons" style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
                     {project.demo && (
 
                         <a
@@ -253,8 +255,8 @@ const ProjectCard = ({ project }) => {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={`View live demo of ${project.title}`}
-                        style={{ padding: "0.625rem 1.5rem", fontSize: "0.75rem", borderRadius: "0.5rem" }}
-                        className="font-mono bg-[#008f5a] dark:bg-[#00ff9f] text-white dark:text-black hover:opacity-80 transition-all duration-200"
+                        style={{ padding: "clamp(0.5rem, 1vw, 0.625rem) clamp(1rem, 2vw, 1.5rem)", fontSize: "clamp(0.65rem, 1.5vw, 0.75rem)", borderRadius: "0.5rem", flexShrink: 0 }}
+                        className="font-mono bg-[#008f5a] dark:bg-[#00ff9f] text-white dark:text-black hover:opacity-80 transition-all duration-200 text-center"
                         >
                         Live Demo ↗
                         </a>
@@ -266,16 +268,16 @@ const ProjectCard = ({ project }) => {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={`View GitHub repository of ${project.title}`}
-                        style={{ padding: "0.625rem 1.5rem", fontSize: "0.75rem", borderRadius: "0.5rem", border: "1px solid" }}
-                        className="font-mono border-[#008f5a] dark:border-[#00ff9f] text-[#008f5a] dark:text-[#00ff9f] hover:bg-[#008f5a] dark:hover:bg-[#00ff9f] hover:text-white dark:hover:text-black transition-all duration-200"
+                        style={{ padding: "clamp(0.5rem, 1vw, 0.625rem) clamp(1rem, 2vw, 1.5rem)", fontSize: "clamp(0.65rem, 1.5vw, 0.75rem)", borderRadius: "0.5rem", border: "1px solid", flexShrink: 0 }}
+                        className="font-mono border-[#008f5a] dark:border-[#00ff9f] text-[#008f5a] dark:text-[#00ff9f] hover:bg-[#008f5a] dark:hover:bg-[#00ff9f] hover:text-white dark:hover:text-black transition-all duration-200 text-center"
                         >
                         GitHub ↗
                         </a>
                     )}
                     {!project.demo && !project.github && (
                         <span
-                        style={{ padding: "0.625rem 1.5rem", fontSize: "0.75rem", borderRadius: "0.5rem", border: "1px solid" }}
-                        className="font-mono border-[#e4e4e4] dark:border-[#1f1f1f] text-[#777777] dark:text-[#6b6b6b]"
+                        style={{ padding: "clamp(0.5rem, 1vw, 0.625rem) clamp(1rem, 2vw, 1.5rem)", fontSize: "clamp(0.65rem, 1.5vw, 0.75rem)", borderRadius: "0.5rem", border: "1px solid" }}
+                        className="font-mono border-[#e4e4e4] dark:border-[#1f1f1f] text-[#777777] dark:text-[#6b6b6b] text-center"
                         >
                         Coming Soon
                         </span>
@@ -294,26 +296,33 @@ const Projects = () => {
     <section
       id="projects"
       aria-label="Projects section"
-      style={{ padding: "6rem 0" }}
-      className="w-full"
+      style={{ padding: "clamp(60px, 10vw, 96px) clamp(16px, 4vw, 80px)", boxSizing: "border-box", maxWidth: "100vw" }}
+      className="w-full overflow-x-hidden"
     >
+      <style>{`
+        @media (min-width: 640px) {
+          .project-buttons {
+            flex-direction: row !important;
+          }
+        }
+      `}</style>
       {/* Section Header */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.6 }}
-        style={{ marginBottom: "4rem" }}
+        style={{ marginBottom: "3rem" }}
       >
         <span
-          style={{ fontSize: "1.1rem" }}
+          style={{ fontSize: "clamp(0.85rem, 1.5vw, 1.1rem)" }}
           className="font-mono text-[#008f5a] dark:text-[#00ff9f] tracking-widest uppercase"
         >
           {">_ projects"}
         </span>
         <h2
-          style={{ marginTop: "1.5rem" }}
-          className="text-4xl md:text-5xl font-bold text-[#111111] dark:text-[#e8e8e8]"
+          style={{ marginTop: "1rem" }}
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#111111] dark:text-[#e8e8e8]"
         >
           What I Have Built
         </h2>
@@ -325,20 +334,14 @@ const Projects = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
-        style={{ display: "flex", flexDirection: "column", gap: "2rem" }}
+        className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 w-full"
       >
-        {featured && <FeaturedProject project={featured} />}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
-            gap: "2rem",
-          }}
-        >
-          {rest.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
-        </div>
+        {featured && <motion.div variants={itemVariants} className="lg:col-span-2"><FeaturedProject project={featured} /></motion.div>}
+        {rest.map((project) => (
+          <motion.div key={project.id} variants={itemVariants}>
+            <ProjectCard project={project} />
+          </motion.div>
+        ))}
       </motion.div>
     </section>
   )

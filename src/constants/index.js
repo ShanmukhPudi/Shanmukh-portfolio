@@ -1,8 +1,7 @@
-import { label } from "framer-motion/client"
-
 const HBP_IMG = new URL("../assets/HBP.jpg", import.meta.url).href
 const DISPATCH_IMG = new URL("../assets/Dispatch.JPG", import.meta.url).href
 const FMS_IMG = new URL("../assets/FMS.JPG", import.meta.url).href
+const RESUME_URL = new URL("../assets/Shanmukh_Resume_GenAI.docx", import.meta.url).href
 
 export const PERSONAL = {
     name: "Shanmukh Pudi",
@@ -12,7 +11,7 @@ export const PERSONAL = {
     location: "Visakhapatnam, Andhra Pradesh, India",
     github: "https://github.com/ShanmukhPudi",
     linkedin: "https://linkedin.com/in/shanmukh-pudi",
-    resume: "/src/assets/ShanmukhKrishna_Frontend_Resume.pdf",
+    resume: RESUME_URL,
     available: true,
 }
 
@@ -30,7 +29,7 @@ export const TYPED_STRINGS = [
 export const ABOUT = {
     bio: ["Hello! I'm Shanmukh, a Frontend Developer with 3+ years of production experience building the kind of software that people actually rely on - workflow systems, operations dashboards and data-driven interfaces that hold real businesses together. My stack is React, TypeScript and modern JavaScript, but what I actually sell is clarity: turning messy, manual processes into clean, fast, usable products.",
     "___________________________________________________________________________",
-    "I owned 6+ production systems shipped independently as a sole architech and sole maintainer. That means I've designed component librarries, wired up REST APIs, and kept things running in production without a team to lean on.",
+    "I owned 6+ production systems shipped independently as a sole architect and sole maintainer. That means I've designed component libraries, wired up REST APIs, and kept things running in production without a team to lean on.",
     "___________________________________________________________________________",
     "Right now I'm focused on growing as a Frontend developer - specifically in product companies where UI quality and user experience are taken seriously. If you care about what ships in the browser as much as what runs behind it, we'll get along just fine."],
       
@@ -131,7 +130,7 @@ export const PROJECTS = [
   {
     id: 1,
     title: "Hotel Booking App",
-    description: "A full-stack hotel booking platfoem with user authentication, hotel listings, room booking flow, and an admin panel for hotel management.",
+    description: "A full-stack hotel booking platform with user authentication, hotel listings, room booking flow, and an admin panel for hotel management.",
     tags: ["MongoDB", "Express", "React", "Node.js", "JWT"],
     github: "https://github.com/ShanmukhPudi/glowing-adventure",
     demo: "https://shanmukhpudi.github.io/glowing-adventure/",
@@ -142,7 +141,7 @@ export const PROJECTS = [
   {
     id: 2,
     title: "Dispatch Management System",
-    description: "An enterprise-grage dispatch and Whatsapp automation system built to eliminate manual communication effort and streamline field operations.",
+    description: "An enterprise-grade dispatch and WhatsApp automation system built to eliminate manual communication effort and streamline field operations.",
     tags: ["React", "Node.js", "PostgreSQL", "WhatsApp API"],
     github: null,
     demo: null,
@@ -169,9 +168,9 @@ export const EXPERIENCE = [
     role: "Software Engineer",
     company: "Mohan Marketing Vizag Private Limited",
     location: "Visakhapatnam, India",
-    duration: "Oct 2023 - Present",
-    current: true,
-    summary: "Building automation systems, internal tools and enterprise workflows that streamline operations and reduce manual workload across teams.",
+    duration: "Oct 2023 - Apr 2026",
+    current: false,
+    summary: "Built workflow automation, ETL pipelines, OCR document processing and REST integrations, plus full-stack internal tools that cut manual work across teams.",
   },
   {
     id: 2,
@@ -187,9 +186,9 @@ export const EXPERIENCE = [
 export const EDUCATION = "Computer Science Engineering Graduate - JNTU, 2022."
 
 export const ACHIEVEMENTS =[
-  { value: "70%", label: "Manual effor reduced" },
+  { value: "70%", label: "Manual effort reduced" },
   { value: "140%", label: "Communication efficiency boost" },
-  { value: "2+", label: "Years of production experience" },
+  { value: "3+", label: "Years of production experience" },
   {value: "10+", label: "Systems built and deployed" },
 ]
 

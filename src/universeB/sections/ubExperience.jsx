@@ -15,7 +15,29 @@ const UBExperience = () => {
         maxWidth: "1400px",
         margin: "0 auto",
       }}
+      className="ub-experience-section"
     >
+      <style>{`
+        @media (max-width: 768px) {
+          .ub-timeline-grid {
+            gap: 0 clamp(16px, 4vw, 24px) !important;
+          }
+          .ub-exp-item {
+            gap: clamp(12px, 3vw, 16px) !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .ub-timeline-grid {
+            gap: 0 clamp(12px, 3vw, 16px) !important;
+          }
+          .ub-achievements {
+            gap: clamp(8px, 2vw, 12px) !important;
+          }
+          .ub-exp-item span:last-child {
+            font-size: 0.65rem !important;
+          }
+        }
+      `}</style>
       <motion.p
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -53,7 +75,7 @@ const UBExperience = () => {
         </motion.h2>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "1px 1fr", gap: "0 48px" }} className="ub-timeline-grid">
+      <div style={{ display: "grid", gridTemplateColumns: "1px 1fr", gap: "0 clamp(24px, 5vw, 48px)" }} className="ub-timeline-grid">
         <div ref={lineRef} style={{ position: "relative", gridRow: `1 / ${EXPERIENCE.length + 2}` }}>
           <div style={{ width: "1px", height: "100%", background: "#C8BFB4", position: "absolute", top: 0, left: 0 }} />
           <motion.div
@@ -74,15 +96,16 @@ const UBExperience = () => {
               padding: "0 0 clamp(40px, 6vw, 72px) 0",
               display: "grid",
               gridTemplateColumns: "1fr auto",
-              gap: "24px",
+              gap: "clamp(12px, 3vw, 24px)",
               alignItems: "start",
               position: "relative",
             }}
+            className="ub-exp-item"
           >
             <div
               style={{
                 position: "absolute",
-                left: "-52px",
+                left: "clamp(-52px, -8vw, -52px)",
                 top: "6px",
                 width: "7px",
                 height: "7px",
@@ -199,13 +222,13 @@ const UBExperience = () => {
         </motion.div>
       </div>
 
-      <div style={{ display: "flex", gap: "22px", marginTop: "40px", flexWrap: "wrap" }}>
+      <div style={{ display: "flex", gap: "clamp(12px, 3vw, 22px)", marginTop: "40px", flexWrap: "wrap" }} className="ub-achievements">
         {ACHIEVEMENTS.map((item, i) => (
           <div
             key={i}
             style={{
-              minWidth: "180px",
-              padding: "16px",
+              minWidth: "clamp(140px, 45vw, 180px)",
+              padding: "clamp(12px, 2vw, 16px)",
               background: "#fff",
               border: "1px solid #C8BFB4",
               display: "flex",

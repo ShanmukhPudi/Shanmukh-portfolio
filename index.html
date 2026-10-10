@@ -2,18 +2,36 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Shanmukh Pudi, frontend developer. React, workflow automation and GenAI. Selected projects, stack and contact." />
+    <meta name="theme-color" content="#0B0D12" />
 
-    <meta name="description" content="Shanmukh - Full Stack Developer and Automation Engineer portfolio" />
+    <!-- Set realm and mode before first paint so the page never flashes the wrong theme -->
+    <script>
+      (function () {
+        try {
+          var d = document.documentElement;
+          var realm = localStorage.getItem("realm") === "classic" ? "classic" : "ember";
+          var mode = localStorage.getItem("mode");
+          if (mode !== "light" && mode !== "dark") {
+            mode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+          }
+          d.dataset.realm = realm;
+          d.dataset.mode = mode;
+          if (realm === "classic") d.classList.add("dark");
+        } catch (e) {}
+      })();
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-/>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-    <title>Shanmukh Krishna Portfolio</title>
+    <title>Shanmukh Pudi | Frontend Developer</title>
   </head>
   <body>
     <div id="root"></div>

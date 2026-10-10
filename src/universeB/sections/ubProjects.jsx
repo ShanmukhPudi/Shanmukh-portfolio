@@ -106,16 +106,18 @@ const ProjectCard = ({ project, index }) => {
 
       <div
         style={{
-          padding: "20px 0 8px",
+          padding: "clamp(12px, 2vw, 20px) 0 8px",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "flex-start",
-          gap: "16px",
+          gap: "clamp(12px, 2vw, 16px)",
           borderTop: "1px solid #C8BFB4",
           marginTop: "1px",
+          flexDirection: "column",
         }}
+        className="ub-proj-meta"
       >
-        <div style={{ flex: 1 }}>
+        <div style={{ flex: 1, width: "100%" }} className="ub-proj-info">
           <h3
             style={{
               fontFamily: "var(--ub-font-heading, 'Space Grotesk', sans-serif)",
@@ -160,7 +162,7 @@ const ProjectCard = ({ project, index }) => {
           </div>
         </div>
 
-        <div style={{ display: "flex", gap: "12px", flexShrink: 0 }}>
+        <div style={{ display: "flex", gap: "12px", flexShrink: 0, width: "100%", justifyContent: "flex-start" }} className="ub-proj-links">
           {project.github && (
             <a
               href={project.github}
@@ -293,7 +295,7 @@ const UBProjects = () => {
         style={{
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
-          gap: "clamp(24px, 3vw, 48px)",
+          gap: "clamp(20px, 3vw, 48px)",
         }}
         className="ub-projects-grid"
       >
@@ -303,7 +305,45 @@ const UBProjects = () => {
       </div>
 
       <style>{`
-        @media (max-width: 768px) { .ub-projects-grid { grid-template-columns: 1fr !important; } }
+        @media (max-width: 1024px) {
+          .ub-projects-grid {
+            grid-template-columns: 1fr !important;
+            gap: clamp(20px, 3vw, 36px) !important;
+          }
+        }
+
+        @media (max-width: 768px) { 
+          .ub-projects-grid { 
+            grid-template-columns: 1fr !important;
+            gap: clamp(16px, 3vw, 24px) !important;
+          }
+          .ub-proj-links {
+            gap: 8px !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          section#projects {
+            padding: clamp(60px, 8vw, 100px) clamp(16px, 4vw, 24px) !important;
+          }
+          .ub-projects-grid {
+            gap: clamp(12px, 2vw, 16px) !important;
+          }
+          .ub-proj-meta {
+            flex-direction: column !important;
+            gap: 12px !important;
+          }
+          .ub-proj-links {
+            flex-direction: row;
+            gap: 8px !important;
+          }
+          .ub-proj-info h3 {
+            font-size: 0.95rem !important;
+          }
+          .ub-proj-info p {
+            font-size: 0.8rem !important;
+          }
+        }
       `}</style>
     </section>
   )

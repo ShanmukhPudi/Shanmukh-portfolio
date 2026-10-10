@@ -87,6 +87,7 @@ const UBHero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ ...UB_EASE.soft, delay: 0.7 }}
           style={{ display: "flex", gap: "16px", flexWrap: "wrap", marginBottom: "48px" }}
+          className="ub-hero-buttons"
         >
           <button
             onClick={() => handleScroll("#projects")}
@@ -246,16 +247,53 @@ const UBHero = () => {
         }
 
         @media (max-width: 1024px) {
-          section#hero { flexDirection: column; }
+          section#hero { 
+            flex-direction: column; 
+            gap: 32px;
+          }
           .ub-hero-right {
-            marginTop: 36px;
+            margin-top: 0;
             width: 100%;
+          }
+          .ub-hero-left {
+            padding-right: 0 !important;
           }
         }
 
         @media (max-width: 768px) {
-          section#hero { flexDirection: column; }
-          .ub-hero-left { paddingRight: 0; }
+          section#hero { 
+            flex-direction: column;
+            padding: 0 clamp(20px, 4vw, 40px) !important;
+            padding-top: 72px !important;
+          }
+          .ub-hero-left { 
+            padding-right: 0;
+          }
+          .ub-hero-right {
+            width: 100%;
+          }
+        }
+
+        @media (max-width: 480px) {
+          section#hero {
+            min-height: auto;
+            padding: 0 clamp(16px, 3vw, 20px) !important;
+            padding-top: 60px !important;
+          }
+          .ub-hero-left {
+            margin-bottom: 32px;
+          }
+          .ub-hero-right {
+            width: 100%;
+            max-width: 100% !important;
+          }
+          .ub-hero-buttons {
+            flex-direction: column !important;
+            gap: 12px !important;
+          }
+          .ub-hero-buttons button {
+            width: 100%;
+          }
         }
       `}</style>
     </section>

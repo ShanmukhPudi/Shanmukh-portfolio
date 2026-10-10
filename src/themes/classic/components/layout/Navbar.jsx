@@ -1,0 +1,135 @@
+import { useState, useEffect } from "react"
+import { Menu, X } from "lucide-react"
+
+const NAV_LINKS = [
+  { label: "About", href: "#about" },
+  { label: "Tech Stack", href: "#tech-stack" },
+  { label: "Projects", href: "#projects" },
+  { label: "Experience", href: "#experience" },
+  { label: "Contact", href: "#contact" },
+]
+
+const Navbar = ({ isDark, isUniverseB,toggleTheme }) => {
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 20)
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  const handleNavClick = (e, href) => {
+    e.preventDefault()
+    const target = document.querySelector(href)
+    if (target) target.scrollIntoView({ behavior: "smooth" })
+  }
+
+  const getToggleLabel = () => {
+    if (isDark) return "[ Change Realm ]"
+    return "[ dark ]"
+  }
+
+  return (
+    <header
+      role="banner"
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300
+        ${isScrolled
+          ? "bg-[#f9f9f9]/90 dark:bg-[#0a0a0a]/90 backdrop-blur-md border-b border-[#e4e4e4] dark:border-[#1f1f1f]"
+          : "bg-[#f9f9f9] dark:bg-[#0a0a0a]"
+        }`}
+    >
+      <div className="w-full">
+      <nav
+        role="navigation"
+        aria-label="Main navigation"
+        className="w-full mx-auto flex items-center justify-between py-9 px-8 md:px-12"
+      >
+
+        {/* Logo */}
+        <a 
+          href="#hero"
+          onClick={(e) => handleNavClick(e, "#hero")}
+          className="font-mono text-[#008f5a] dark:text-[#00ff9f] text-2xl font-bold tracking-tight hover:opacity-80 transition-opacity"
+          aria-label="Shanmukh - Back to top"
+        >
+          &gt;_ shanmukh
+        </a>
+
+        {/* Desktop Nav Links */}
+        <ul
+          role="list"
+          className="hidden md:flex items-center gap-12 lg:gap-16"
+        >
+          {NAV_LINKS.map((link) => (
+            <li key={link.href}>
+              <a 
+                href={link.href}
+                onClick={(e) => handleNavClick(e, link.href)}
+                className="text-lg font-medium text-[#111111] dark:text-[#e8e8e8] hover:text-[#008f5a] dark:hover:text-[#00ff9f] transition-colors duration-200"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        {/* Right Side — Theme Toggle + Mobile Menu */}
+        <div className="flex items-center gap-6 md:gap-8">
+
+          {/* Theme Toggle */}
+          <button
+            onClick={toggleTheme}
+            className="px-4 py-2 text-black dark:text-[#00ff9f] font-mono text-sm rounded hover:bg-[#008f5a] dark:hover:bg-[#00ff9f] hover:text-white dark:hover:text-black transition-all duration-200"
+            aria-label="Switch portfolio theme"
+          >
+            {getToggleLabel()}
+          </button>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="md:hidden text-[#111111] dark:text-[#e8e8e8] hover:text-[#008f5a] dark:hover:text-[#00ff9f] transition-colors"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+          >
+            {menuOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+
+        </div>
+      </nav>
+      </div>
+
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <div
+          id="mobile-menu"
+          role="dialog"
+          aria-label="Mobile navigation menu"
+          className="md:hidden bg-[#f9f9f9] dark:bg-[#0a0a0a] border-t border-[#e4e4e4] dark:border-[#1f1f1f] px-6 py-4"
+        >
+          <ul role="list" className="flex flex-col gap-4">
+            {NAV_LINKS.map((link) => (
+              <li key={link.href}>
+                
+                <a 
+                  href={link.href}
+                  onClick={(e) => {
+                    handleNavClick(e, link.href)
+                    setMenuOpen(false)
+                  }}
+                  className="text-sm font-medium text-[#111111] dark:text-[#e8e8e8] hover:text-[#008f5a] dark:hover:text-[#00ff9f] transition-colors duration-200"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </header>
+  )
+}
+
+export default Navbar
