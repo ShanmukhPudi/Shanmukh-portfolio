@@ -165,15 +165,24 @@ export const PROJECTS = [
 export const EXPERIENCE = [
   {
     id: 1,
+    role: "UI Dev ➡ GenAI Engineer",
+    company: "PrasadityaIdea",
+    location: "Hyderabad, India",
+    duration: "Aug 2026 - Present",
+    current: true,
+    summary: "Three competing designs in, one clear direction out, built as reusable components for the whole software suite. React · TypeScript · Component Design · Design Reconciliation · Finance UX · ERP",
+  },
+  {
+    id: 2,
     role: "Software Engineer",
-    company: "Mohan Marketing Vizag Private Limited",
+    company: "MMV Private Limited",
     location: "Visakhapatnam, India",
     duration: "Oct 2023 - Apr 2026",
     current: false,
     summary: "Built workflow automation, ETL pipelines, OCR document processing and REST integrations, plus full-stack internal tools that cut manual work across teams.",
   },
   {
-    id: 2,
+    id: 3,
     role: "Research Analyst",
     company: "Mind Brink",
     location: "Vijayawada, India",
