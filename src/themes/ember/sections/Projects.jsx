@@ -3,11 +3,12 @@ import { PROJECTS } from "../../../constants"
 import hbp from "../../../assets/hbp.webp"
 import dispatch from "../../../assets/dispatch.webp"
 import fms from "../../../assets/fms.webp"
+import personalRadio from "../../../assets/PersonalRadio.png"
 import { MaskLines, FadeUp } from "../ui/Reveal"
 
 // Optimised covers for this theme (the classic theme keeps using the originals)
-const COVERS = { 1: hbp, 2: dispatch, 3: fms }
-const LAYOUT = ["featured", "c-a", "c-b"]
+const COVERS = { 1: hbp, 2: dispatch, 3: fms, 4: personalRadio }
+const LAYOUT = ["featured", "c-a", "c-b", "featured"]
 
 // Cursor-following light, written straight to CSS vars so nothing re-renders
 const spotlight = (e) => {

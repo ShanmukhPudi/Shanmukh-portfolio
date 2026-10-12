@@ -6,6 +6,7 @@ import Projects from "./sections/Projects"
 import Stack from "./sections/Stack"
 import Path from "./sections/Path"
 import Contact from "./sections/Contact"
+import ScrollTop from "./ui/ScrollTop"
 
 const EmberApp = ({ mode, onToggleMode, onSwitchRealm }) => (
   <div className="ember" id="top">
@@ -19,6 +20,7 @@ const EmberApp = ({ mode, onToggleMode, onSwitchRealm }) => (
       <Path />
       <Contact />
     </main>
+    <ScrollTop />
   </div>
 )
 

@@ -1,6 +1,7 @@
 const HBP_IMG = new URL("../assets/HBP.jpg", import.meta.url).href
 const DISPATCH_IMG = new URL("../assets/Dispatch.JPG", import.meta.url).href
 const FMS_IMG = new URL("../assets/FMS.JPG", import.meta.url).href
+const PERSONAL_RADIO_IMG = new URL("../assets/PersonalRadio.png", import.meta.url).href
 const RESUME_URL = new URL("../assets/Shanmukh_Resume_GenAI.docx", import.meta.url).href
 
 export const PERSONAL = {
@@ -159,6 +160,17 @@ export const PROJECTS = [
     status: "In-development",
     featured: false,
     image: FMS_IMG,
+  },
+  {
+    id: 4,
+    title: "Personal Radio",
+    description: "A self-hosted music player backed by a private Cloudflare R2 bucket and an authenticated Cloudflare Worker API, wrapped in an installable vinyl-deck PWA with an aurora/particle background, offline caching, and iOS lock-screen media controls.",
+    tags: ["Cloudflare Workers", "Cloudflare R2", "JavaScript", "PWA", "Node.js"],
+    github: "https://github.com/ShanmukhPudi/ItsOnAgain",
+    demo: null,
+    status: "live",
+    featured: false,
+    image: PERSONAL_RADIO_IMG,
   },
 ]
 

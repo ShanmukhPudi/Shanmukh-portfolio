@@ -153,6 +153,15 @@ html[data-realm="ember"] body {
 .ember .chip-btn:active { transform: scale(0.96); }
 .ember .menu-btn { display: none; }
 
+.ember .scroll-top {
+  position: fixed; bottom: var(--gutter); right: var(--gutter); z-index: 60;
+  width: 44px; height: 44px; border-radius: 999px; display: inline-grid; place-items: center;
+  border: 1px solid var(--line); background: var(--bg); color: var(--ink); cursor: pointer;
+  transition: border-color 0.2s, background-color 0.2s, transform 0.15s;
+}
+.ember .scroll-top:hover { border-color: var(--accent-text); background: color-mix(in srgb, var(--accent) 12%, transparent); }
+.ember .scroll-top:active { transform: scale(0.96); }
+
 .ember .nav-menu {
   pointer-events: auto;
   width: min(1280px, 100% - 2 * var(--gutter)); margin: 8px auto 0;
